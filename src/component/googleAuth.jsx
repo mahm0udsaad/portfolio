@@ -39,21 +39,9 @@ function GoogleLoginPage() {
       
         return (
           <>
-            <h1>Login with Google</h1>
-            {profile ? (
-              <div className='block h-full w-4/5'>
-                <h2>Welcome, {profile.name}</h2>
-                <p>Email: {profile.email}</p>
-                <img className='w-full' src={profile.picture} alt="User Profile" />
-                <div>
-                <button onClick={handelLogout}>Logout</button>
-                </div>
-              </div>
-            ) : (
               <GoogleOAuthProvider clientId={clientId}>
                 <Google onSuccess={getInfo} />
               </GoogleOAuthProvider>
-            )}
           </>
         );
 

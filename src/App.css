@@ -6,6 +6,9 @@
     transform: var(--avatar-right);
     z-index: 50;
 }
+.top-of{
+    z-index: 70;
+}
 body{
     overflow: hidden;
 }
@@ -72,7 +75,7 @@ body{
   }
   @media (min-width: 768px) and (max-width: 1023px) {
     :root {
-        --avatar-right: translate(22%,45%); /* Default font size */
+        --avatar-right: translate(80%,45%); /* Default font size */
       }
     .avatar{
         transform: var(--avatar-right);

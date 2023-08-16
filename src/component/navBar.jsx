@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const Navbar = ({ setGoToProjects }) => {
+const Navbar = ({ setGoToProjects ,goToProjects}) => {
   const [menuOpen, setMenuOpen] = useState(false);
   useNavigate()
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+  const closeMenu=()=>{
+    setMenuOpen(false)
+  }
 
   return (
-    <nav className="fixed bg-transparent p-4 flex justify-between items-center w-4/5 lg:w-11/12 lg:mx-10">
-      <div className="font-semibold text-xl"><i className="color-blue fas fa-database">logo</i></div>
+    <nav  className={goToProjects ? 'hidden':"bg-transparent p-4 z-50  flex justify-between items-center w-11/12 lg:mx-10"}>
+      <div className="font-semibold text-xl"><i className="color-blues fas fa-database">logo</i></div>
       <div className="hidden sm:flex space-x-4">
         <Link 
           to={'/'}
@@ -62,7 +65,7 @@ const Navbar = ({ setGoToProjects }) => {
         </svg>
       </button>
       <div
-        className={`z-50 bg-white sm:hidden flex flex-col w-full items-center absolute top-0 right-0 bg-blue p-4 space-y-4 space-x-5 transform ${
+        className={`top-of bg-white sm:hidden flex flex-col w-full items-center absolute top-0 right-0 bg-blue p-4 space-y-4 space-x-5 transform ${
           menuOpen
             ? "translate-y-0 opacity-100"
             : "-translate-y-full opacity-50 pointer-events-none"
@@ -71,17 +74,30 @@ const Navbar = ({ setGoToProjects }) => {
         <button className="absolute top-2 p-5 right-3" onClick={toggleMenu}>
         <i className="fa-solid fa-xmark"></i>
         </button>
-        <Link   className="p-5 hoverd-btn rounded">
+        <Link 
+        onClick={closeMenu}
+        to={'/'}  
+        className="p-5 hoverd-btn rounded">
           Home
         </Link>
-        <Link    className="p-5 hoverd-btn rounded">
+        <Link  
+          onClick={()=>{
+            closeMenu()
+            setGoToProjects(true)
+          }}
+          to={'/'}
+          className="p-5 hoverd-btn rounded">
           Projects
         </Link>
-        <Link   className="p-5 hoverd-btn rounded">
+        <Link to={'/about'} 
+        onClick={closeMenu}
+         className="p-5 hoverd-btn rounded">
           About
         </Link>
-        <Link  
-         className="p-5 hoverd-btn active rounded">
+        <Link
+        onClick={closeMenu}
+         to={'/contact'}
+         className="p-5 hoverd-btn rounded">
           Contact Me
         </Link>
       </div>

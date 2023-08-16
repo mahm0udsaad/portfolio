@@ -33,7 +33,9 @@ function Main({ goToProjects , setGoToProjects}) {
     { name: "Node.js", icon: nodejsIcon },
     { name: "MongoDB", icon: mongodbIcon },
   ];
-
+  const handleUnclickableDivClick = (event) => {
+    event.stopPropagation();
+  };
   useEffect(() => {
     if (!introComplete && currentIndex < intro.length) {
       const timeoutId = setTimeout(() => {
@@ -69,7 +71,7 @@ function Main({ goToProjects , setGoToProjects}) {
   };
   return (
     <>
-      <div className="h-screen flex flex-col overflow-hidden">
+      <div className="h-screen w-full flex flex-col">
         <div
           style={{
             height: goToProjects ? "0" : "50%",
@@ -91,6 +93,7 @@ function Main({ goToProjects , setGoToProjects}) {
           </ul>
         </div>
         <img
+        onClick={handleUnclickableDivClick}
          style={{
           transform: goToProjects ? "translatex(200%)" : "var(--avatar-right)",
           transition:"0.5s ease"
@@ -105,14 +108,14 @@ function Main({ goToProjects , setGoToProjects}) {
             height: goToProjects ? "100vh" : "50%",
             transition: "height 0.5s ease",
           }}
-          className="z-30 translate-y-0 ease-out duration-1000 overflow-hidden"
+          className="translate-y-0 ease-out duration-1000 overflow-hidden"
         >
           <button
             onClick={showProjects}
             style={{
                 display:selectedProject ? 'none':'block'
             }}
-            className={goToProjects ? "ease-out duration-300 top-center-btn -rotate-90 absolute right-center":"hover:translate-y-5 ease-out duration-300 absolute right-center rotate-90"} 
+            className={goToProjects ? "ease-out duration-300 top-center-btn -rotate-90 absolute right-center":"hover:translate-y-5 mb-10 ease-out duration-300 absolute right-center rotate-90"} 
           >
             <img
               src="https://img.icons8.com/?size=512&id=115723&format=png"
@@ -122,7 +125,7 @@ function Main({ goToProjects , setGoToProjects}) {
             />
           </button>
           {goToProjects && <Projects setSelectedProject={setSelectedProject} selectedProject={selectedProject} goToProjects={goToProjects}/>}
-            <h1 className={goToProjects?'hidden':"right-center absolute bottom-10  text-white text-5xl"}>Projects</h1>
+            <h1 className={goToProjects?'hidden':"right-center absolute  text-white text-5xl"}>Projects</h1>
         </div>
       </div>
     </>
