@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -8,13 +8,13 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed bg-transparent p-4 flex justify-between items-center">
-      <div className=" font-semibold text-xl">Your Logo</div>
+    <nav className="fixed bg-transparent p-4 flex justify-between items-center w-4/5 lg:w-11/12 lg:mx-10">
+      <div className="font-semibold text-xl"><i className="fas fa-database">logo</i></div>
       <div className="hidden sm:flex space-x-4">
         <a
           href="#home"
           className={`hover:bg-blue-500 hover:text-white ease-in duration-300 px-4 py-2 rounded ${
-            menuOpen ? 'bg-blue-500' : ''
+            menuOpen ? "bg-blue-500" : ""
           }`}
         >
           Home
@@ -22,7 +22,7 @@ const Navbar = () => {
         <a
           href="#projects"
           className={` hover:bg-blue-500 hover:text-white ease-in duration-300 px-4 py-2 rounded ${
-            menuOpen ? 'bg-blue-500' : ''
+            menuOpen ? "bg-blue-500" : ""
           }`}
         >
           Projects
@@ -30,7 +30,7 @@ const Navbar = () => {
         <a
           href="#about"
           className={` hover:bg-blue-500 hover:text-white ease-in duration-300 px-4 py-2 rounded ${
-            menuOpen ? 'bg-blue-500' : ''
+            menuOpen ? "bg-blue-500" : ""
           }`}
         >
           About
@@ -38,16 +38,13 @@ const Navbar = () => {
         <a
           href="#contact"
           className={` bg-blue-500 text-white ease-in duration-300 px-4 py-2 rounded ${
-            menuOpen ? 'bg-blue-500' : ''
+            menuOpen ? "bg-blue-500" : ""
           }`}
         >
           Contact Me
         </a>
       </div>
-      <button
-        className="sm:hidden  focus:outline-none"
-        onClick={toggleMenu}
-      >
+      <button className="lg:hidden  focus:outline-none" onClick={toggleMenu}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
@@ -63,9 +60,11 @@ const Navbar = () => {
           />
         </svg>
       </button>
-            <div
+      <div
         className={`z-50 bg-white sm:hidden flex flex-col w-full items-center absolute top-0 right-0 bg-blue p-4 space-y-4 space-x-5 transform ${
-          menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-50 pointer-events-none'
+          menuOpen
+            ? "translate-y-0 opacity-100"
+            : "-translate-y-full opacity-50 pointer-events-none"
         } ease-in-out duration-300`}
       >
         <button className="absolute top-2 p-5 right-3" onClick={toggleMenu}>
@@ -84,7 +83,6 @@ const Navbar = () => {
           Contact Me
         </a>
       </div>
-
     </nav>
   );
 };

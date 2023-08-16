@@ -1,7 +1,9 @@
+:root {
+    --avatar-right:translate(115%,45%); /* Default font size */
+  }
 .avatar{
     position: absolute;
-    right: 0;
-    bottom: 35%;
+    transform: var(--avatar-right);
     z-index: 50;
 }
 body{
@@ -17,20 +19,76 @@ body{
     right: 45%;
     bottom: 25%;
 }
+.top-center-btn{
+    top: -65%;
+    width: 10%;
+    transition: .5s ease-in-out;
+}
+.project-card{
+    width: 250px;
+}
+.project-card img{
+    width: 100%;
+}
+.mt-30{
+    margin-top: 10%;
+}
 @media (max-width: 767px) {
+    :root {
+        --avatar-right: translate(22%,45%); /* Default font size */
+      }
     .avatar{
-        right: -115px;
-        bottom: 30%;
+        transform: var(--avatar-right);
         height: 40%;
     }
     .w-container{
         width: 95%;
     }
+    .top-center-btn{
+        top: -70%;
+        width: 12%;
+        left: 45%;
+        transition: .5s ease-in-out;
+    }
+    .right-center{
+        right: 30%;
+        bottom: 25%;
+    }
+    .res{
+        width: 70%;
+    }
+    .project-card img{
+        width: 160px;
+    }
   }
   @media (min-width: 768px) and (max-width: 1023px) {
+    :root {
+        --avatar-right: translate(22%,45%); /* Default font size */
+      }
     .avatar{
-        right: -80px;
-        bottom: 30%;
+        transform: var(--avatar-right);
         height: 40%;
     }
   }
+@keyframes showTech {
+    from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+}
+.showTech{
+    animation: showTech 0.5s ease-in-out;
+}
+@keyframes showAvatar {
+    from {
+        right: -60%;
+      }
+      to {
+        right: var(--avatar-right);
+      }
+}
+.showAvatar{
+    animation: showAvatar 0.5s ease-in-out;
+}

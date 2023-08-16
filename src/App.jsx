@@ -1,13 +1,14 @@
-import { useEffect, useState ,useCallback} from 'react'
-import './App.css'
-import Navbar from './component/navBar'
-import htmlIcon from './assets/html.png';
-import cssIcon from './assets/css-3.png';
-import jsIcon from './assets/js.png';
-import mongodbIcon from './assets/mongodb.svg';
-import nodejsIcon from './assets/nodejs.png';
-import tailwindIcon from './assets/tailwind-css-svgrepo-com.svg';
-import reactIcon from './assets/react.svg';
+import { useEffect, useState, useCallback } from "react";
+import "./App.css";
+import Navbar from "./component/navBar";
+import htmlIcon from "./assets/html.png";
+import cssIcon from "./assets/css-3.png";
+import jsIcon from "./assets/js.png";
+import mongodbIcon from "./assets/mongodb.svg";
+import nodejsIcon from "./assets/nodejs.png";
+import tailwindIcon from "./assets/tailwind-css-svgrepo-com.svg";
+import reactIcon from "./assets/react.svg";
+import Projects from "./component/projects";
 
 function App() {
   const intro = `
@@ -15,77 +16,118 @@ function App() {
    as a dedicated React Developer, 
    passionate about crafting 
    captivating user experiences
-   through code. 🚀`
-  const [displayText, setDisplayText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [goToProjects , setGoToProjects] =useState(false)
+   through code. 🚀`;
+   const [goToProjects, setGoToProjects] = useState(false);
+   const [introComplete, setIntroComplete] = useState(false);
+   const [showTechnologies, setShowTechnologies] = useState(false);
+   const [currentTechIndex, setCurrentTechIndex] = useState(0);
+   const [removeTechIndex, setRemoveTechIndex] = useState(0);
+   const [currentIndex, setCurrentIndex] = useState(0);
+   const [displayText, setDisplayText] = useState("");
+
   const technologies = [
-    { name: 'HTML5', icon: htmlIcon },
-    { name: 'CSS3', icon: cssIcon },
-    { name: 'JavaScript', icon: jsIcon },
-    { name: 'React', icon: reactIcon },
-    { name: 'Tailwind CSS', icon: tailwindIcon },
-    { name: 'Node.js', icon: nodejsIcon },
-    { name: 'MongoDB', icon: mongodbIcon },
+    { name: "HTML5", icon: htmlIcon },
+    { name: "CSS3", icon: cssIcon },
+    { name: "JavaScript", icon: jsIcon },
+    { name: "React", icon: reactIcon },
+    { name: "Tailwind CSS", icon: tailwindIcon },
+    { name: "Node.js", icon: nodejsIcon },
+    { name: "MongoDB", icon: mongodbIcon },
   ];
+
   useEffect(() => {
-    if (currentIndex < intro.length) {
+    if (!introComplete && currentIndex < intro.length) {
       const timeoutId = setTimeout(() => {
         setDisplayText(prev => prev + intro[currentIndex]);
         setCurrentIndex(prevIndex => prevIndex + 1);
       }, 30);
-      
+
       return () => clearTimeout(timeoutId);
+    } else if (currentIndex === intro.length) {
+      setIntroComplete(true);
     }
-  }, [currentIndex]);
+  }, [currentIndex, introComplete]);
+
+  useEffect(() => {
+    if (introComplete && currentTechIndex < technologies.length) {
+      const showTechs = setTimeout(() => {
+        setCurrentTechIndex(prev => prev + 1);
+      }, 70);
+
+      return () => clearTimeout(showTechs);
+    }
+  }, [introComplete, currentTechIndex]);
+  useEffect(()=>{
+    if(goToProjects && removeTechIndex <= 0){
+      const removeTime = setTimeout(()=>{
+        setRemoveTechIndex(prev => prev - 1)
+      },30)
+      return ()=> clearTimeout(removeTime)
+    }
+  },[goToProjects, removeTechIndex])
   const showProjects = () => {
-     setGoToProjects(!goToProjects)
+    setGoToProjects(!goToProjects);
   };
+
+
   return (
     <>
-             <Navbar />
-              <div className="h-screen flex flex-col">
-                <div
-                  style={{
-                    height: goToProjects ? '0' : '50%',
-                    transition: 'height 0.5s ease',
-                  }}
-                   className="h-1/2 flex flex-col justify-between">
-                  <div className="intro mt-20 w-container mx-auto">
-                    <h1 className='italic text-4xl color-blue'>{displayText} {currentIndex < intro.length ? '|' :''}</h1>
-                  </div>
-                  <ul className='flex z-20 space-x-5 mx-auto w-container my-5'>
-                  {technologies.map((tech, index) => (
-                    <li key={index}>
-                      <img src={tech.icon} alt={tech.name} width="50" height="50" />
-                    </li>
-                  ))}
-                </ul>
-                </div>
-                <img src="src\assets\24770152_101-removebg-preview.png" className='avatar' alt="" />
-                <div
-                  style={{
-                    background: '#265169',
-                    height: goToProjects ? '100vh' : '50%',
-                    transition: 'height 0.5s ease'
-                  }}
-                  className="translate-y-0 ease-out duration-1000 overflow-hidden"
-                >
-                  <button
-                    onClick={showProjects}
-                    className="hover:translate-y-5 ease-out duration-300 absolute right-center rotate-90"
-                  >
-                    <img
-                      src="https://img.icons8.com/?size=512&id=115723&format=png"
-                      alt=""
-                      width="150"
-                      height="150"
-                    />
-                  </button>
-                </div>
-            </div>
+      <Navbar />
+      <div className="h-screen flex flex-col overflow-hidden">
+        <div
+          style={{
+            height: goToProjects ? "0" : "50%",
+            transition: "height 0.5s ease",
+          }}
+          className="h-1/2 flex flex-col justify-between"
+        >
+          <div className="intro mt-20 lg:mt-25  mt-12 w-container mx-auto">
+            <h1 className="italic text-2xl lg:text-4xl color-blue">
+              {displayText} {currentIndex < intro.length ? "|" : ""}
+            </h1>
+          </div>
+          <ul className="flex z-20 space-x-5 res mx-2 lg:mx-auto w-container my-5">
+            {introComplete && currentIndex > 0 ? technologies.slice(0, goToProjects ?  removeTechIndex :currentTechIndex + 1).map((tech, index) => (
+                  <li className="showTech ease-in duration-3000" key={index}>
+                    <img src={tech.icon} alt={tech.name} width="50" height="50" />
+                  </li>
+                )):('')}
+          </ul>
+        </div>
+        <img
+         style={{
+          transform: goToProjects ? "translatex(100%)" : "var(--avatar-right)",
+          transition:"0.5s ease"
+        }}
+          src="src\assets\24770152_101-removebg-preview.png"
+          className="avatar showAvatar"
+          alt=""
+        />
+        <div
+          style={{
+            background: "#265169",
+            height: goToProjects ? "100vh" : "50%",
+            transition: "height 0.5s ease",
+          }}
+          className="z-30 translate-y-0 ease-out duration-1000 overflow-hidden"
+        >
+          <button
+            onClick={showProjects}
+            className={goToProjects ? "ease-out duration-300 top-center-btn -rotate-90 absolute right-center":"hover:translate-y-5 ease-out duration-300 absolute right-center rotate-90"} 
+          >
+            <img
+              src="https://img.icons8.com/?size=512&id=115723&format=png"
+              alt=""
+              width={goToProjects ? "70":"150"}
+              height={goToProjects ? "70":"150"}
+            />
+          </button>
+          {goToProjects && <Projects goToProjects={goToProjects}/>}
+            <h1 className={goToProjects?'hidden':"right-center absolute bottom-10  text-white text-5xl"}>Projects</h1>
+        </div>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
