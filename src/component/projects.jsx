@@ -1,45 +1,45 @@
 import { useState, useEffect } from "react";
 import ProjectCard from './projectCard'
-const Projects = ({goToProjects}) => {
+const Projects = ({goToProjects ,selectedProject ,setSelectedProject}) => {
     const [currentTechIndex, setCurrentTechIndex] = useState(0);
     const [removeProjectsIndex, setRemoveProjectsIndex] = useState(0);
-    const [selectedProject , setSelectedProject] = useState(null)
-    const [projects , setProjecs ] = useState([
+    const [projects, setProjects] = useState([
       {
         image: 'src/assets/projects/ecommerce.png',
         name: 'Ecommerce site',
-        description: 'Ecommerce site',
-        url: 'https://project1.com',
-        codeUrl: 'https://github.com/project1'
+        description: 'Welcome to the Ecommerce site! This project showcases an online shopping platform built using React and Tailwind CSS. Users can explore a variety of products, add them to the cart, and proceed to checkout. The site offers a seamless shopping experience with a user-friendly interface.',
+        url: 'https://e-commerce-ebn2.onrender.com/',
+        codeUrl: 'https://github.com/mahm0udsaad/E_Commerce'
       },
       {
         image: 'src/assets/projects/1692014389916.png',
-        name: 'property finder clone',
-        description: 'Description of Project 2',
-        url: 'https://project2.com',
-        codeUrl: 'https://github.com/project2'
+        name: 'Property Finder Clone',
+        description: "Welcome to the Property Finder Clone! This is the client-side repository of the app, developed using React, Tailwind CSS, and communicating with the backend built on Express.js and MongoDB. Explore property listings, search for your dream home, and find all the details you need.",
+        url: 'https://property-finder-8ixf.onrender.com/',
+        codeUrl: 'https://github.com/mahm0udsaad/property_finder'
       },
       {
         image: 'src/assets/projects/image.png',
-        name: 'Hotel booking site',
-        description: 'Description of Project 3',
-        url: 'https://project3.com',
-        codeUrl: 'https://github.com/project3'
+        name: 'Hotel Booking Site',
+        description: 'Welcome to the Hotel Booking Site with Restaurants Page! This project is a Hotel Booking Site with an integrated restaurant page, developed using React, Tailwind CSS, and React Router. Explore available rooms, make reservations, and find information about the hotel\'s restaurants.',
+        url: 'https://azure-waves.onrender.com/',
+        codeUrl: 'https://github.com/mahm0udsaad/Stars-Hotel'
       },
       {
         image: 'src/assets/projects/weather.png',
         name: 'Weather App',
-        description: 'Description of Project 4',
-        url: 'https://project4.com',
-        codeUrl: 'https://github.com/project4'
+        description: 'Welcome to WeatherApp! This user-friendly weather application provides real-time weather information for any location in the world. With an easy-to-use interface and web-based location access, WeatherApp allows you to quickly check current weather conditions, temperature, humidity, wind speed, and more.',
+        url: 'https://weather-app-ykqq.onrender.com/',
+        codeUrl: 'https://github.com/mahm0udsaad/weather-app'
       },
       {
         image: 'src/assets/projects/todo.png',
         name: 'Todo App',
-        description: 'Description of Project 5',
-        url: 'https://project5.com',
-        codeUrl: 'https://github.com/project5'
-      } ])
+        description: 'Welcome to the Todo App! This is a simple task manager built using HTML, CSS, and JavaScript. Add, delete, and edit tasks with ease. The app utilizes LocalStorage to save your tasks even after you close the browser.',
+        url: 'https://todoapp-ebmi.onrender.com/',
+        codeUrl: 'https://github.com/mahm0udsaad/todo-app'
+      }
+    ]);
     
    useEffect(() => {
       if (goToProjects && currentTechIndex < projects.length) {
@@ -69,7 +69,7 @@ const Projects = ({goToProjects}) => {
     return ( 
   <div className="text-white lg:w-container mt-30 lg:mx-auto relative flex flex-col justify-center items-center">
       <h1 className="text-5xl">{selectedProject? selectedProject.name:'Projects'}</h1>
-        {selectedProject ? <button className="hover:opacity-50 absolute top-0 left-0 " onClick={initialProjects}><i class="fa-3x fa-regular fa-circle-left"></i></button> : ''}
+        {selectedProject ? <button className="hover:opacity-50 absolute top-0 left-5 " onClick={initialProjects}><i class="fa-3x fa-regular fa-circle-left"></i></button> : ''}
       <ul className={selectedProject ? 'w-full h-full':"flex justify-center item-center z-20 space-x-5 res mx-2 lg:mx-auto w-full my-5"}>
       {goToProjects ? (
     <div className="projects-container">

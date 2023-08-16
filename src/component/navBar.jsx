@@ -1,48 +1,49 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ setGoToProjects }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  useNavigate()
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
   return (
     <nav className="fixed bg-transparent p-4 flex justify-between items-center w-4/5 lg:w-11/12 lg:mx-10">
-      <div className="font-semibold text-xl"><i className="fas fa-database">logo</i></div>
+      <div className="font-semibold text-xl"><i className="color-blue fas fa-database">logo</i></div>
       <div className="hidden sm:flex space-x-4">
-        <a
-          href="#home"
-          className={`hover:bg-blue-500 hover:text-white ease-in duration-300 px-4 py-2 rounded ${
-            menuOpen ? "bg-blue-500" : ""
+        <Link 
+          to={'/'}
+          className={`hoverd-btn hover:text-white ease-in duration-300 px-4 py-2 rounded ${
+            menuOpen ? "hoverd-btn " : ""
           }`}
         >
           Home
-        </a>
-        <a
-          href="#projects"
-          className={` hover:bg-blue-500 hover:text-white ease-in duration-300 px-4 py-2 rounded ${
-            menuOpen ? "bg-blue-500" : ""
+        </Link>
+        <Link
+          onClick={()=>setGoToProjects(true)}
+          className={` hoverd-btn hover:text-white ease-in duration-300 px-4 py-2 rounded ${
+            menuOpen ? "hoverd-btn " : ""
           }`}
         >
           Projects
-        </a>
-        <a
-          href="#about"
-          className={` hover:bg-blue-500 hover:text-white ease-in duration-300 px-4 py-2 rounded ${
-            menuOpen ? "bg-blue-500" : ""
+        </Link>
+        <Link
+          to={'/About'}
+          className={` hoverd-btn hover:text-white ease-in duration-300 px-4 py-2 rounded ${
+            menuOpen ? "hoverd-btn " : ""
           }`}
         >
           About
-        </a>
-        <a
-          href="#contact"
-          className={` bg-blue-500 text-white ease-in duration-300 px-4 py-2 rounded ${
-            menuOpen ? "bg-blue-500" : ""
+        </Link>
+        <Link
+          to={'/contact'}
+          className={` hoverd-btn active text-white ease-in duration-300 px-4 py-2 rounded ${
+            menuOpen ? "hoverd-btn " : ""
           }`}
         >
           Contact Me
-        </a>
+        </Link>
       </div>
       <button className="lg:hidden  focus:outline-none" onClick={toggleMenu}>
         <svg
@@ -68,20 +69,21 @@ const Navbar = () => {
         } ease-in-out duration-300`}
       >
         <button className="absolute top-2 p-5 right-3" onClick={toggleMenu}>
-          X
+        <i className="fa-solid fa-xmark"></i>
         </button>
-        <a href="#home" className="p-5 hover:bg-blue-500 rounded">
+        <Link   className="p-5 hoverd-btn rounded">
           Home
-        </a>
-        <a href="#projects" className="p-5 hover:bg-blue-500 rounded">
+        </Link>
+        <Link    className="p-5 hoverd-btn rounded">
           Projects
-        </a>
-        <a href="#about" className="p-5 hover:bg-blue-500 rounded">
+        </Link>
+        <Link   className="p-5 hoverd-btn rounded">
           About
-        </a>
-        <a href="#contact" className="p-5 hover:bg-blue-500 rounded">
+        </Link>
+        <Link  
+         className="p-5 hoverd-btn active rounded">
           Contact Me
-        </a>
+        </Link>
       </div>
     </nav>
   );

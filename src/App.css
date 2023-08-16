@@ -19,6 +19,12 @@ body{
     right: 45%;
     bottom: 25%;
 }
+.hoverd-btn:hover{
+  background-color: #265169;
+}
+.hoverd-btn.active{
+    background-color: #265169;
+  }
 .top-center-btn{
     top: -65%;
     width: 10%;
@@ -32,6 +38,9 @@ body{
 }
 .mt-30{
     margin-top: 10%;
+}
+.section-container{
+    margin: 0 4%;
 }
 @media (max-width: 767px) {
     :root {
