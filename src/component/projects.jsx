@@ -45,7 +45,7 @@ const Projects = ({goToProjects ,selectedProject ,setSelectedProject}) => {
       if (goToProjects && currentTechIndex < projects.length) {
         const showProjects = setTimeout(() => {
           setCurrentTechIndex(prev => prev + 1);
-        }, 400);
+        }, 450);
         return () => clearTimeout(showProjects);
       }
     }, [goToProjects,currentTechIndex]);

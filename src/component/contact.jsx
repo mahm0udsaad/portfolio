@@ -36,7 +36,7 @@ const Contact = () => {
         const handleSubmit = (event) => {
           event.preventDefault();
           console.log(formData);
-          axios.post('https://portfolio-backend-ic8b.onrender.com/sendEmail', formData)
+          axios.post('https://my-portfolio-fci7.onrender.com/sendEmail', formData)
             .then(response => {
               console.log('Response:', response.data);
             })
@@ -45,20 +45,24 @@ const Contact = () => {
             });
         };
     return ( 
-        <div style={{background: 'rgb(241 241 241)',color:'#265169'}} className="h-full absolute top-20 w-full flex justify-center">
-            <div className="mx-auto mt-5 w-11/12 flex flex-col justify-center">
+      <div style={{ background: 'rgb(241 241 241)', color: '#265169' }} className="h-screen w-full overflow-hidden">
+        <div
+                className="h-full absolute top-20 w-full flex justify-center"
+              >
+           <div className="mx-auto mt-5 w-11/12 flex flex-col justify-center">
              <div className="h-full text-center">
              <h1 className="text-4xl">Send me an Email</h1>
              {user ? 
             <div>
                   <h1>Welcome {user.name}</h1>
-                  <GoogleLoginPage />
+                  <Form formData={formData} handleChange={handleChange} handleSubmit={handleSubmit}/>
             </div>
              :
-             <Form formData={formData} handleChange={handleChange} handleSubmit={handleSubmit}/>
+             <GoogleLoginPage />
              }
              </div>
             </div>
+           </div>
         </div>
      );
 }
