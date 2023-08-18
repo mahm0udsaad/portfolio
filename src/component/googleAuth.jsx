@@ -3,7 +3,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import jwtDecode from 'jwt-decode';
 import Google from './google';
 
-const clientId ="31184692775-1ita8021mqdom1jktgk1t369j3uk6jj4.apps.googleusercontent.com"
+const clientId ="762315185183-r8j58rnvi30ov9ghthc21qbr6q1ll0ke.apps.googleusercontent.com"
 
 function GoogleLoginPage() {
         const [user, setUser] = useState({});

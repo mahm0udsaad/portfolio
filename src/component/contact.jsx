@@ -11,20 +11,19 @@ const Contact = () => {
       message: '',
     });
     const [user , setUser] = useState({})
-    useEffect(()=>{
-        const storedProfile = localStorage.getItem('userProfile');
-        setUser(JSON.parse(storedProfile))
-        },[])
-        useEffect(()=>{
-            if (user) {
-                setFormData({
-                  name: user.name || '',
-                  email: user.email || '',
-                  message: '',
-                });
-              }
-        },[user])
+    useEffect(() => {
+      const storedProfile = localStorage.getItem('userProfile');
+      const parsedProfile = JSON.parse(storedProfile);
+      setUser(parsedProfile);
       
+      if (parsedProfile) {
+        setFormData({
+          name: parsedProfile.name || '',
+          email: parsedProfile.email || '',
+          message: '',
+        });
+      }
+    }, []);
         const handleChange = (event) => {
           const { name, value } = event.target;
           setFormData((prevData) => ({
