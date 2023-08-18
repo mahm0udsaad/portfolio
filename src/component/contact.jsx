@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import GoogleLoginPage from "./googleAuth";
+import axios from "axios";
 import Form from "./form";
 
 const Contact = () => {
@@ -34,9 +35,14 @@ const Contact = () => {
       
         const handleSubmit = (event) => {
           event.preventDefault();
-          // For demonstration purposes, log the form data to the console
-          console.log('Form data submitted:', formData);
-          // Here you can add your logic for sending the email using an API or service
+          console.log(formData);
+          axios.post('https://portfolio-backend-ic8b.onrender.com/sendEmail', formData)
+            .then(response => {
+              console.log('Response:', response.data);
+            })
+            .catch(error => {
+              console.error('Error:', error);
+            });
         };
     return ( 
         <div style={{background: 'rgb(241 241 241)',color:'#265169'}} className="h-full absolute top-20 w-full flex justify-center">
@@ -46,9 +52,11 @@ const Contact = () => {
              {user ? 
             <div>
                   <h1>Welcome {user.name}</h1>
-                  <Form formData={formData} handleChange={handleChange} handleSubmit={handleSubmit}/>
+                  <GoogleLoginPage />
             </div>
-             :<GoogleLoginPage />}
+             :
+             <Form formData={formData} handleChange={handleChange} handleSubmit={handleSubmit}/>
+             }
              </div>
             </div>
         </div>

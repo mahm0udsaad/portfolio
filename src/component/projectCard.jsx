@@ -10,7 +10,7 @@ const ProjectCard = ({ tech, index ,showCardDetails ,isItSelected  ,dimension}) 
     }
   return (
     <>
-      <div onMouseMove={hoverd} onMouseLeave={leaveHover} onClick={showCardDetails} className={isItSelected ? '  my-5 mx-auto relative cursor-pointer w-1/2' :'cursor-pointer relative showTech project-card flex flex-col justify-center relative'} key={index}>
+      <div onMouseMove={hoverd} onMouseLeave={leaveHover} onClick={showCardDetails} className={isItSelected ? 'w-11/12 my-10 mx-auto relative cursor-pointer w-1/2' :'cursor-pointer relative showTech project-card flex flex-col justify-center relative'} key={index}>
         {onHover ? ( 
                 <div className={onHover ? 'ease-in duration-300 bg-black/50 w-full h-full  absolute project-links z-60 flex flex-col justify-center':" w-full h-full  absolute project-links z-60 flex flex-col justify-center"}>
                  <div className=" item-center flex justify-around">
@@ -23,10 +23,10 @@ const ProjectCard = ({ tech, index ,showCardDetails ,isItSelected  ,dimension}) 
                  </div>
              </div>):('')}
             <img  className='z-30 ease-in duration-300' src={tech.image} alt={tech.name} width={dimension} height={dimension} />
-            <div className={isItSelected ? "ease-in duration-300 translate-y-full absolute flex flex-col justify-between p-3 top-0 h-full w-full":'hidden'}>
-            <p className='text-2xl'>{tech.description}</p>
-            </div>
          </div>
+            <div className={isItSelected ? "h-60 overflow-auto mx-5 h-2/4":'hidden'}>
+             <p className='lg:text-2xl text-xl'>{tech.description}</p>
+            </div>
     </>
   );
 };

@@ -13,7 +13,7 @@ const Navbar = ({ setGoToProjects ,goToProjects}) => {
 
   return (
     <nav  className={goToProjects ? 'hidden':"bg-transparent p-4 z-50  flex justify-between items-center w-11/12 lg:mx-10"}>
-      <div className="font-semibold text-xl"><i className="color-blues fas fa-database">logo</i></div>
+      <Link to={'/'} className="font-semibold text-xl"><i className="fa-brands fa-centercode"></i></Link>
       <div className="hidden sm:flex space-x-4">
         <Link 
           to={'/'}
@@ -77,7 +77,7 @@ const Navbar = ({ setGoToProjects ,goToProjects}) => {
         <Link 
         onClick={closeMenu}
         to={'/'}  
-        className="p-5 hoverd-btn rounded">
+        className="p-5 hoverd-btn rounded hover:text-white ease-in duration-300">
           Home
         </Link>
         <Link  
@@ -86,18 +86,18 @@ const Navbar = ({ setGoToProjects ,goToProjects}) => {
             setGoToProjects(true)
           }}
           to={'/'}
-          className="p-5 hoverd-btn rounded">
+          className="p-5 hoverd-btn rounded hover:text-white ease-in duration-300">
           Projects
         </Link>
         <Link to={'/about'} 
         onClick={closeMenu}
-         className="p-5 hoverd-btn rounded">
+         className="p-5 hoverd-btn rounded hover:text-white ease-in duration-300">
           About
         </Link>
         <Link
         onClick={closeMenu}
          to={'/contact'}
-         className="p-5 hoverd-btn rounded">
+         className="p-5 hoverd-btn rounded hover:text-white ease-in duration-300">
           Contact Me
         </Link>
       </div>

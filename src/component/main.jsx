@@ -33,9 +33,6 @@ function Main({ goToProjects , setGoToProjects}) {
     { name: "Node.js", icon: nodejsIcon },
     { name: "MongoDB", icon: mongodbIcon },
   ];
-  const handleUnclickableDivClick = (event) => {
-    event.stopPropagation();
-  };
   useEffect(() => {
     if (!introComplete && currentIndex < intro.length) {
       const timeoutId = setTimeout(() => {
@@ -93,12 +90,11 @@ function Main({ goToProjects , setGoToProjects}) {
           </ul>
         </div>
         <img
-        onClick={handleUnclickableDivClick}
          style={{
           transform: goToProjects ? "translatex(200%)" : "var(--avatar-right)",
           transition:"0.5s ease"
         }}
-          src="src\assets\24770152_101-removebg-preview.png"
+          src="https://i.imgur.com/J9fpajk.png"
           className="avatar showAvatar"
           alt=""
         />

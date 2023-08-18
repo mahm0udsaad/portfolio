@@ -40,33 +40,33 @@ const About = () => {
    
     return ( 
         <div className="h-screen w-full overflow-hidden">
-  <div
-    style={{ background: 'rgb(241 241 241)', color: '#265169' }}
-    className="h-full absolute top-20 w-full flex justify-center"
-  >
-    <div className="mx-auto mt-5 w-11/12 block text-center">
-      <h1 className="text-5xl">About me</h1>
-      <div className="mt-10 flex justify-center text-start h-1/2 lg:h-3/5 overflow-hidden">
-        <h1 className="lg:text-4xl">
-          {displayText}
-          {currentIndex < intro.length ? '|' : ''}
-        </h1>
-      </div>
-      <div className="justify-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 overflow-auto max-h-[30vh]">
-          {softSkills.map((obj) => (
-            <div
-              style={{ backgroundColor: `${obj.color}` }}
-              className="rounded-full p-5 m-2 text-center"
-              key={obj.index}
-            >
-              {obj.skill}
+      <div
+        style={{ background: 'rgb(241 241 241)', color: '#265169' }}
+        className="h-full absolute top-20 w-full flex justify-center"
+      >
+        <div className="mx-auto mt-5 w-11/12 block text-center">
+          <h1 className="text-5xl">About me</h1>
+          <div className="mt-10 flex justify-center text-start h-1/2 lg:h-3/5 overflow-hidden">
+            <h1 className="lg:text-4xl">
+              {displayText}
+              {currentIndex < intro.length ? '|' : ''}
+            </h1>
+          </div>
+          <div className="justify-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-1 overflow-auto max-h-[30vh]">
+              {softSkills.map((obj) => (
+                <div
+                  style={{ backgroundColor: `${obj.color}` }}
+                  className="rounded-full p-5  text-center"
+                  key={obj.index}
+                >
+                  {obj.skill}
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 </div>
 
      );

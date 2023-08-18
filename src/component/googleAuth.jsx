@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import Google from './google';
-import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import Google from './google';
 
-const clientId = '31184692775-flh741b14ktv2rd68tpeqdc4ofpabepg.apps.googleusercontent.com';
+const clientId ="31184692775-1ita8021mqdom1jktgk1t369j3uk6jj4.apps.googleusercontent.com"
 
 function GoogleLoginPage() {
         const [user, setUser] = useState({});
@@ -15,20 +14,16 @@ function GoogleLoginPage() {
           const storedProfile = localStorage.getItem('userProfile');
           const profileInfo = JSON.parse(storedProfile)
           if (profileInfo) {
-            setProfile(profileInfo);
+            setProfile(profileInfo);  
           }else{
             setProfile(null)
           }
         }, []);
-        const handelLogout = () => {
-           localStorage.removeItem('userProfile')
-           setProfile(null)
-        };
         const getInfo = (res) => {
           const decoded = jwtDecode(res.credential);
           const { given_name, family_name, email, picture } = decoded;
           const newProfile = {
-            name: given_name +''+family_name,
+            name: given_name + family_name,
             email: email,
             picture: picture
           };
