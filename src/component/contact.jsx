@@ -31,9 +31,9 @@ const Contact = () => {
     };
     useEffect(() => {
         setFormData({
-          ...formData, // Preserve the existing values
           name:profile ?  profile.name :'',
           email: profile ? profile.email :'',
+          message:''
         });
     }, [profile]);
 
