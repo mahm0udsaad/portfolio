@@ -31,6 +31,7 @@ const Contact = () => {
     };
     useEffect(() => {
         setFormData({
+          ...formData, // Preserve the existing values
           name:profile ?  profile.name :'',
           email: profile ? profile.email :'',
           message:''
@@ -49,7 +50,7 @@ const Contact = () => {
           event.preventDefault();
           axios.post('https://api-w7qp.onrender.com/sendEmail', formData)
             .then(response => {
-              console.log(formData);
+              setIsSubmited(true)
             })
             .catch(error => {
               console.error('Server Error:', error);
