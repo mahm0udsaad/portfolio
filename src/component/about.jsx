@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 const About = () => {
     const intro = `
-    My name is Mahmoud Saad, a determined individual of 22 years, currently in my fourth year at Helwan University's Faculty of Commerce. Despite my studies in business, I have embarked on a transformative journey to pursue a career in programming and web development. In the midst of the challenging year that was 2019, I took the initiative to delve into the world of web development, and my passion for creating dynamic digital experiences has only grown stronger since. Although my previous work experiences have been in different fields, they have equipped me with invaluable skills that I believe will complement my aspirations as a web developer. I am driven by a desire to continually expand my knowledge and expertise in this ever-evolving field, and I am eagerly looking forward to contributing my creativity and dedication to the world of web development.`;
+    My name is Mahmoud Saad,My name is Mahmoud Saad,My name is Mahmoud Saad,My name is Mahmoud Saad,My name is Mahmoud Saad,My name is Mahmoud Saad, a determined individual of 22 years, currently in my fourth year at Helwan University's Faculty of Commerce. Despite my studies in business, I have embarked on a transformative journey to pursue a career in programming and web development. In the midst of the challenging year that was 2019, I took the initiative to delve into the world of web development, and my passion for creating dynamic digital experiences has only grown stronger since. Although my previous work experiences have been in different fields, they have equipped me with invaluable skills that I believe will complement my aspirations as a web developer. I am driven by a desire to continually expand my knowledge and expertise in this ever-evolving field, and I am eagerly looking forward to contributing my creativity and dedication to the world of web development.`;
     const [currentIndex, setCurrentIndex] = useState(0);
     const [displayText, setDisplayText] = useState("");
     const softSkills = [
@@ -37,7 +37,7 @@ const About = () => {
          const timeoutId = setTimeout(() => {
            setDisplayText(prev => prev + intro[currentIndex]);
            setCurrentIndex(prevIndex => prevIndex + 1);
-         }, 10);
+         }, 8);
    
          return () => clearTimeout(timeoutId);
        } 
@@ -50,8 +50,8 @@ const About = () => {
       >
         <div className=" h-2/1 lg:h-3/5 mx-auto mt-0 w-11/12 block text-center">
           <h1 className="text-5xl">About me</h1>
-          <div className="mt-5 flex justify-start text-start">
-            <h1 className="lg:text-2xl overflow-auto text-start">
+          <div style={{height: '45%'}} className="mt-5 flex justify-start text-start overflow-auto">
+            <h1 className="lg:text-2xl text-start">
               {displayText}
               {currentIndex < intro.length ? '|' : ''}
             </h1>
