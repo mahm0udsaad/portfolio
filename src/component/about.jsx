@@ -32,7 +32,7 @@ const About = () => {
          const timeoutId = setTimeout(() => {
            setDisplayText(prev => prev + intro[currentIndex]);
            setCurrentIndex(prevIndex => prevIndex + 1);
-         }, 30);
+         }, 15);
    
          return () => clearTimeout(timeoutId);
        } 
@@ -41,21 +41,21 @@ const About = () => {
     return ( 
         <div style={{ background: 'rgb(241 241 241)', color: '#265169' }} className="h-screen w-full overflow-hidden">
       <div
-        className="h-full absolute top-20 w-full flex justify-center"
+        className="h-screen absolute top-20 w-full flex justify-center"
       >
-        <div className="mx-auto mt-5 w-11/12 block text-center">
+        <div className=" h-2/1 lg:h-3/5 mx-auto mt-0 w-11/12 block text-center">
           <h1 className="text-5xl">About me</h1>
-          <div className="mt-10 flex justify-center text-start h-1/2 lg:h-3/5">
-            <h1 className="lg:text-4xl overflow-auto">
+          <div className="mt-5 flex justify-center text-start">
+            <h1 className="lg:text-2xl overflow-auto text-start">
               {displayText}
               {currentIndex < intro.length ? '|' : ''}
             </h1>
           </div>
-          <div className="justify-center">
-            <div className="grid grid-cols-1 mt-5 lg:grid-cols-2 gap-1 overflow-auto max-h-[25vh]">
-              {softSkills.map((obj) => (
+          <div className="justify-center fixed bottom-0 left-0 w-full p-3">
+            <div className="grid grid-cols-1 mt-5 lg:grid-cols-2 gap-1 overflow-auto max-h-[30vh]">
+              {softSkills.map((obj , index) => (
                 <div
-                  key={obj.index}
+                  key={index}
                   style={{ backgroundColor: `${obj.color}` }}
                   className="rounded-full lg:p-5 p-3 text-center"
                 >
@@ -66,7 +66,7 @@ const About = () => {
           </div>
         </div>
       </div>
-</div>
+    </div>
 
      );
 }

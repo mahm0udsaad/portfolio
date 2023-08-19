@@ -47,11 +47,11 @@ body{
 }
 @media (max-width: 767px) {
     :root {
-        --avatar-right: translate(22%,45%); /* Default font size */
+        --avatar-right: translate(20%,56%); 
       }
     .avatar{
         transform: var(--avatar-right);
-        height: 40%;
+        height: 300px;
     }
     .w-container{
         width: 95%;

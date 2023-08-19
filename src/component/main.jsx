@@ -76,14 +76,14 @@ function Main({ goToProjects , setGoToProjects}) {
           }}
           className="h-1/2 flex flex-col justify-between"
         >
-          <div className="intro mt-20 lg:mt-25  mt-12 w-container mx-auto">
+          <div className="intro mt-16 lg:mt-25  lg:mt-12 w-container mx-auto">
             <h1 className="italic text-2xl lg:text-4xl color-blue">
               {displayText} {currentIndex < intro.length ? "|" : ""}
             </h1>
           </div>
           <ul className="flex z-20 space-x-5 res mx-2 lg:mx-auto w-container my-5">
             {introComplete && currentIndex > 0 ? technologies.slice(0, goToProjects ?  removeTechIndex :currentTechIndex + 1).map((tech, index) => (
-                  <li className="showTech ease-in duration-3000" key={index}>
+                  <li className="showTech ease-in duration-300" key={index}>
                     <img src={tech.icon} alt={tech.name} width="50" height="50" />
                   </li>
                 )):('')}

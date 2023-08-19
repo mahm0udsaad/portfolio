@@ -12,7 +12,7 @@ const ProjectCard = ({ tech, index ,showCardDetails ,isItSelected  ,dimension}) 
     <>
       <div onMouseMove={hoverd} onMouseLeave={leaveHover} onClick={showCardDetails} className={isItSelected ? 'w-11/12 my-10 mx-auto relative cursor-pointer w-1/2' :'cursor-pointer relative showTech project-card flex flex-col justify-center relative'} key={index}>
         {onHover ? ( 
-                <div className={onHover ? 'ease-in duration-300 bg-black/50 w-full h-full  absolute project-links z-60 flex flex-col justify-center':" w-full h-full  absolute project-links z-60 flex flex-col justify-center"}>
+                <div className={onHover ? 'ease-in duration-600 bg-black/50 w-full h-full  absolute project-links z-60 flex flex-col justify-center':" w-full h-full  absolute project-links z-60 flex flex-col justify-center"}>
                  <div className=" item-center flex justify-around">
                  <a className='z-50 bg-green-700  hover:bg-green-500 rounded px-3 py-3 text-lg ease-in duration-300' href={tech.url} target="_blank" rel="noopener noreferrer">
                 Live

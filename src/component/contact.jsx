@@ -31,7 +31,6 @@ const Contact = () => {
     };
     useEffect(() => {
         setFormData({
-          ...formData, // Preserve the existing values
           name:profile ?  profile.name :'',
           email: profile ? profile.email :'',
           message:''
@@ -70,15 +69,16 @@ const Contact = () => {
                 ) : (
                   <div>
                     <h1 className="text-4xl">Send me an Email</h1>
+                    <GoogleOAuthProvider clientId={clientId}>
+                      <Google onSuccess={getInfo} />
+                    </GoogleOAuthProvider>
                     {profile ? (
                       <div>
                         <h1>Welcome {profile.name}</h1>
                         <Form formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
                       </div>
                     ) : (
-                      <GoogleOAuthProvider clientId={clientId}>
-                        <Google onSuccess={getInfo} />
-                      </GoogleOAuthProvider>
+                      <Form formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
                     )}
                   </div>
                 )}
