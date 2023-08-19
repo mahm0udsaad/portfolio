@@ -50,6 +50,7 @@ const Contact = () => {
           axios.post('https://my-portfolio-fci7.onrender.com/sendEmail', formData)
             .then(response => {
               setIsSubmited(true)
+              console.log(formData)
             })
             .catch(error => {
               console.error('Server Error:', error);
