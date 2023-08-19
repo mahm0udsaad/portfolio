@@ -1,11 +1,4 @@
 import { useEffect, useState } from "react";
-import htmlIcon from "../assets/html.png";
-import cssIcon from "../assets/css-3.png";
-import jsIcon from "../assets/js.png";
-import mongodbIcon from "../assets/mongodb.svg";
-import nodejsIcon from "../assets/nodejs.png";
-import tailwindIcon from "../assets/tailwind-css-svgrepo-com.svg";
-import reactIcon from "../assets/react.svg";
 import Projects from "./projects";
 import "../App.css";
 
@@ -22,6 +15,7 @@ function Main({ goToProjects , setGoToProjects}) {
    const [removeTechIndex, setRemoveTechIndex] = useState(0);
    const [currentIndex, setCurrentIndex] = useState(0);
    const [displayText, setDisplayText] = useState("");
+   const [imgCalss , setImgClass] =useState('');
    const [projects, setProjects] = useState([
     {
       image: 'https://i.imgur.com/TwVuEQp.png',
@@ -93,6 +87,10 @@ function Main({ goToProjects , setGoToProjects}) {
   }, [introComplete, currentTechIndex]);
   useEffect(()=>{
     if(goToProjects && removeTechIndex <= 0){
+      setTimeout(() => {
+         const newimgCalss = goToProjects ? 'hidden' : ''
+         setImgClass(newimgCalss)
+      }, 1000);
       const removeTime = setTimeout(()=>{
         setRemoveTechIndex(prev => prev - 1)
       },30)
@@ -102,6 +100,20 @@ function Main({ goToProjects , setGoToProjects}) {
   const showProjects = () => {
     setGoToProjects(!goToProjects);
   };
+  useEffect(() => {
+    if (goToProjects) {
+      const timeoutId = setTimeout(() => {
+        document.querySelector('.avatar').style.display = 'none';
+      }, 300);
+
+      return () => clearTimeout(timeoutId);
+    }else {
+      const timeoutId = setTimeout(() => {
+        document.querySelector('.avatar').style.display = 'block';
+      }, 100);
+      return ()=> clearTimeout(timeoutId)
+    }
+  }, [goToProjects]);
   return (
     <>
       <div className="h-screen w-full flex flex-col">
@@ -112,13 +124,13 @@ function Main({ goToProjects , setGoToProjects}) {
           }}
           className="flex flex-col justify-between"
         >
-          <div className="intro mt-10 lg:mt-25  lg:mt-12 w-container mx-auto">
+          <div className="intro  lg:mt-25  lg:mt-12 w-container mx-auto">
             <p className="italic text-2xl lg:text-4xl color-blue">
               {displayText} {currentIndex < intro.length ? "|" : ""}
             </p>
           </div>
           {introComplete && currentIndex > 0 ? (
-              <ul className="techList flex z-20 space-x-5 lg:space-x-8 res mx-2 lg:mx-auto w-container my-5">
+              <ul className="techList flex  z-20 space-x-5 lg:space-x-8 res mx-2 lg:mx-auto w-container my-5">
                 {technologies
                   .slice(0, goToProjects ? removeTechIndex : currentTechIndex + 1)
                   .map((tech, index) => (
@@ -135,12 +147,12 @@ function Main({ goToProjects , setGoToProjects}) {
             ) : null}
               <img
                 style={{
-                  transform: goToProjects ? "translatex(200%)" : "var(--avatar-right)",
-                  transition:"0.5s ease"
+                  transform: goToProjects ? "translatex(500%)" : "var(--avatar-right)",
+                  transition:"0.5s ease",
                 }}
-                  src="https://i.imgur.com/J9fpajk.png"
-                  className="avatar showAvatar"
-                  alt=""
+                  src="src\assets\1647323032570-PhotoRoom.png-PhotoRoom.png"
+                  className={`${imgCalss} avatar rounded showAvatar`}
+                  alt="photo"
                 />
         </div>
         <div

@@ -31,9 +31,9 @@ const ProjectCard = ({ tech, index ,showCardDetails ,isItSelected  ,dimension}) 
     }
   return (
     <>
-      <div onMouseMove={hoverd} onMouseLeave={leaveHover} onClick={showCardDetails} className={isItSelected ? 'w-11/12 my-10 mx-auto relative cursor-pointer w-1/2 ' :`${imagesLoaded ? "loaded":"loading"} cursor-pointer relative showTech project-card flex flex-col justify-center relative`} key={index}>
+      <div onMouseMove={hoverd} onMouseLeave={leaveHover} onClick={showCardDetails} className={isItSelected ? 'w-11/12 my-10 mx-auto relative cursor-pointer ' :`${imagesLoaded ? "loaded":"loading"} cursor-pointer relative w-full flex flex-col justify-center relative`} key={index}>
         {onHover ? ( 
-                <div className={onHover ? 'ease-in duration-600 bg-black/50 w-full h-full  absolute project-links z-60 flex flex-col justify-center':" w-full h-full  absolute project-links z-60 flex flex-col justify-center"}>
+                <div  className={onHover ? 'w-full z-40 ease-in duration-600 bg-black/50 h-full  absolute  z-60 flex flex-col justify-center w-6/12 mx-auto':" h-full  absolute project-links z-60 flex flex-col justify-center"}>
                  <div className=" item-center flex justify-around">
                  <a className='z-50 bg-green-700  hover:bg-green-500 rounded px-3 py-3 text-lg ease-in duration-300' href={tech.url} target="_blank" rel="noopener noreferrer">
                 Live
@@ -43,7 +43,7 @@ const ProjectCard = ({ tech, index ,showCardDetails ,isItSelected  ,dimension}) 
                 </a>
                  </div>
              </div>):('')}
-            <img  className='z-30 ease-in duration-300' src={tech.image} alt={tech.name} width={dimension} height={dimension} />
+            <img   className='mx-auto w-full z-30 ease-in duration-300 lg:w-6/12' src={tech.image} alt={tech.name} width={dimension} height={dimension} />
          </div>
             <div className={isItSelected ? "h-60 overflow-auto mx-5 h-2/4":'hidden'}>
              <p className='lg:text-2xl text-xl'>{tech.description}</p>

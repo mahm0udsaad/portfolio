@@ -1,10 +1,11 @@
 :root {
-    --avatar-right:translate(125%,45%);
+    --avatar-right:translate(300%,65%);
   }
 .avatar{
     position: absolute;
     transform: var(--avatar-right);
     z-index: 50;
+    width: 300px;
 }
 .top-of{
     z-index: 70;
@@ -17,6 +18,7 @@
 }
 body{
     overflow: hidden;
+    height: 100vh;
 }
 .w-container{
     width: 80%;
@@ -51,13 +53,18 @@ body{
 .section-container{
     margin: 0 4%;
 }
+.project-container{
+    width: 100%;
+  }
 @media (max-width: 767px) {
     :root {
-        --avatar-right: translate(20%,55%); 
+        --avatar-right: translate(150%,140%); 
       }
+   
     .avatar{
         transform: var(--avatar-right);
-        height: 300px;
+        height: 150px;
+        width: 150px;
     }
     .w-container{
         width: 95%;
