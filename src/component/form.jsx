@@ -1,7 +1,6 @@
 const Form = ({formData , handleChange , handleSubmit}) => {
     return ( 
         <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded shadow-md">
-      <h2 className="text-2xl font-semibold mb-4">Send an Email</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="name" className="block text-gray-700 font-medium">

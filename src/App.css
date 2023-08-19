@@ -1,5 +1,5 @@
 :root {
-    --avatar-right:translate(115%,45%);
+    --avatar-right:translate(125%,45%);
   }
 .avatar{
     position: absolute;
@@ -53,7 +53,7 @@ body{
 }
 @media (max-width: 767px) {
     :root {
-        --avatar-right: translate(20%,56%); 
+        --avatar-right: translate(20%,55%); 
       }
     .avatar{
         transform: var(--avatar-right);

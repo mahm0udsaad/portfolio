@@ -10,12 +10,11 @@ import Projects from "./projects";
 import "../App.css";
 
 function Main({ goToProjects , setGoToProjects}) {
-  const intro = `
-  Greetings! I'm thrilled to introduce myself
-   as a dedicated React Developer, 
-   passionate about crafting 
-   captivating user experiences
-   through code. 🚀`;
+  const intro = `Hello, I'm excited to present myself
+  as a committed React Developer, 
+  driven by a deep passion for creating
+  compelling user experiences
+  through innovative code. Let's build something great together! 🚀`;
    const [introComplete, setIntroComplete] = useState(false);
    const [showTechnologies, setShowTechnologies] = useState(false);
    const [selectedProject , setSelectedProject] = useState(null)
@@ -114,36 +113,36 @@ function Main({ goToProjects , setGoToProjects}) {
           className="flex flex-col justify-between"
         >
           <div className="intro mt-16 lg:mt-25  lg:mt-12 w-container mx-auto">
-            <h1 className="italic text-2xl lg:text-4xl color-blue">
+            <p className="italic text-2xl lg:text-4xl color-blue">
               {displayText} {currentIndex < intro.length ? "|" : ""}
-            </h1>
+            </p>
           </div>
           {introComplete && currentIndex > 0 ? (
-              <ul className="techList flex z-20 space-x-5 res mx-2 lg:mx-auto w-container my-5">
+              <ul className="techList flex z-20 space-x-5 lg:space-x-8 res mx-2 lg:mx-auto w-container my-5">
                 {technologies
                   .slice(0, goToProjects ? removeTechIndex : currentTechIndex + 1)
                   .map((tech, index) => (
-                    <li className="showTech ease-in duration-300" key={index}>
+                    <li className="showTech ease-in duration-300 "  key={index}>
                       <span
                         className="icon"
                         style={{ color: tech.color }}
                       >
-                        <i className={`fa-2x ${tech.iconClass}`}></i>
+                        <i className={`lg:text-5xl text-2xl ${tech.iconClass}`}></i>
                       </span>
                     </li>
                   ))}
               </ul>
             ) : null}
+              <img
+                style={{
+                  transform: goToProjects ? "translatex(200%)" : "var(--avatar-right)",
+                  transition:"0.5s ease"
+                }}
+                  src="https://i.imgur.com/J9fpajk.png"
+                  className="avatar showAvatar"
+                  alt=""
+                />
         </div>
-        <img
-         style={{
-          transform: goToProjects ? "translatex(200%)" : "var(--avatar-right)",
-          transition:"0.5s ease"
-        }}
-          src="https://i.imgur.com/J9fpajk.png"
-          className="avatar showAvatar"
-          alt=""
-        />
         <div
           style={{
             background: "#265169",
