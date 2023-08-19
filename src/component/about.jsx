@@ -49,11 +49,11 @@ const About = () => {
     return ( 
         <div style={{ background: 'rgb(241 241 241)', color: '#265169' }} className="h-screen w-full overflow-hidden">
       <div
-        className="h-screen absolute top-20 w-full flex justify-center"
+        className="h-screen absolute top-16 w-full flex justify-center"
       >
         <div className="mx-auto mt-0 w-11/12 block text-center">
-          <h1 className="text-5xl">About me</h1>
-          <div className="h-[45vh] mt-5 flex justify-start text-start overflow-auto">
+          <h1 className="text-4xl">About me</h1>
+          <div className="h-[45vh] mt-2 flex justify-start text-start overflow-auto">
             <p className="lg:text-2xl text-start">
               {displayText}
               {currentIndex < intro.length ? '|' : ''}
