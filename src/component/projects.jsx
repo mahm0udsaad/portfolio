@@ -38,7 +38,7 @@ const Projects = ({goToProjects ,selectedProject ,setSelectedProject ,projects})
       {goToProjects ? (
     <div className="projects-container">
   {goToProjects ? (
-    <div className={selectedProject ? 'w-full' : "mx-auto grid gap-8 w-11/12 items-center justify-center grid-cols-2 lg:grid-cols-3 lg:grid-rows-3"}>
+    <div className={selectedProject ? 'flex flex-col w-full' : "mx-auto grid gap-8 w-11/12 items-center justify-center grid-cols-2 lg:grid-cols-3 lg:grid-rows-3"}>
      {selectedProject ? (
          <ProjectCard key={selectedProject.index} isItSelected={selectedProject} tech={selectedProject} index={selectedProject.index} />
      ):(
