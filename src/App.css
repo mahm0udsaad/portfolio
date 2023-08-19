@@ -1,5 +1,5 @@
 :root {
-    --avatar-right:translate(115%,45%); /* Default font size */
+    --avatar-right:translate(115%,45%);
   }
 .avatar{
     position: absolute;
@@ -64,7 +64,7 @@ body{
     }
     .right-center{
         right: 30%;
-        bottom: 25%;
+        bottom: 35%;
     }
     .res{
         width: 70%;
