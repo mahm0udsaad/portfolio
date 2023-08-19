@@ -112,7 +112,7 @@ function Main({ goToProjects , setGoToProjects}) {
           }}
           className="flex flex-col justify-between"
         >
-          <div className="intro mt-16 lg:mt-25  lg:mt-12 w-container mx-auto">
+          <div className="intro mt-10 lg:mt-25  lg:mt-12 w-container mx-auto">
             <p className="italic text-2xl lg:text-4xl color-blue">
               {displayText} {currentIndex < intro.length ? "|" : ""}
             </p>
