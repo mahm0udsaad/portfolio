@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import ProjectCard from './projectCard'
-const Projects = ({goToProjects ,selectedProject ,setSelectedProject}) => {
+const Projects = ({goToProjects ,selectedProject ,setSelectedProject }) => {
     const [currentTechIndex, setCurrentTechIndex] = useState(0);
     const [removeProjectsIndex, setRemoveProjectsIndex] = useState(0);
     const [projects, setProjects] = useState([

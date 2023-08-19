@@ -1,7 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 
 const ProjectCard = ({ tech, index ,showCardDetails ,isItSelected  ,dimension}) => {
     const [onHover , setHover] = useState(false)
+    const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  useEffect(() => {
+    const imageElements = Array.from(
+      document.querySelectorAll(".project-card img")
+    );
+
+    const handleImageLoad = () => {
+      setImagesLoaded(true);
+    };
+
+    imageElements.forEach((img) => {
+      img.addEventListener("load", handleImageLoad);
+    });
+
+    return () => {
+      imageElements.forEach((img) => {
+        img.removeEventListener("load", handleImageLoad);
+      });
+    };
+  }, []);
     const hoverd =()=>{
         isItSelected ? setHover(true) : null
     }
@@ -10,7 +31,7 @@ const ProjectCard = ({ tech, index ,showCardDetails ,isItSelected  ,dimension}) 
     }
   return (
     <>
-      <div onMouseMove={hoverd} onMouseLeave={leaveHover} onClick={showCardDetails} className={isItSelected ? 'w-11/12 my-10 mx-auto relative cursor-pointer w-1/2' :'cursor-pointer relative showTech project-card flex flex-col justify-center relative'} key={index}>
+      <div onMouseMove={hoverd} onMouseLeave={leaveHover} onClick={showCardDetails} className={isItSelected ? 'w-11/12 my-10 mx-auto relative cursor-pointer w-1/2 ' :`${imagesLoaded ? "loaded":"loading"} cursor-pointer relative showTech project-card flex flex-col justify-center relative`} key={index}>
         {onHover ? ( 
                 <div className={onHover ? 'ease-in duration-600 bg-black/50 w-full h-full  absolute project-links z-60 flex flex-col justify-center':" w-full h-full  absolute project-links z-60 flex flex-col justify-center"}>
                  <div className=" item-center flex justify-around">

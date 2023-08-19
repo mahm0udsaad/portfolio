@@ -26,13 +26,18 @@ const About = () => {
           color: "#c3c0c0" 
 
         }
+        ,{
+          skill: "creativity",
+          color: "#a4d5c6" 
+
+        }
       ];
     useEffect(() => {
        if ( currentIndex < intro.length) {
          const timeoutId = setTimeout(() => {
            setDisplayText(prev => prev + intro[currentIndex]);
            setCurrentIndex(prevIndex => prevIndex + 1);
-         }, 15);
+         }, 10);
    
          return () => clearTimeout(timeoutId);
        } 
@@ -45,19 +50,19 @@ const About = () => {
       >
         <div className=" h-2/1 lg:h-3/5 mx-auto mt-0 w-11/12 block text-center">
           <h1 className="text-5xl">About me</h1>
-          <div className="mt-5 flex justify-center text-start">
+          <div className="mt-5 flex justify-start text-start">
             <h1 className="lg:text-2xl overflow-auto text-start">
               {displayText}
               {currentIndex < intro.length ? '|' : ''}
             </h1>
           </div>
           <div className="justify-center fixed bottom-0 left-0 w-full p-3">
-            <div className="grid grid-cols-1 mt-5 lg:grid-cols-2 gap-1 overflow-auto max-h-[30vh]">
+            <div className="grid grid-cols-1 mt-5 lg:grid-cols-2 gap-1 overflow-auto max-h-[32vh] lg:max-h-[40vh]">
               {softSkills.map((obj , index) => (
                 <div
                   key={index}
                   style={{ backgroundColor: `${obj.color}` }}
-                  className="rounded-full lg:p-5 p-3 text-center"
+                  className="rounded-full lg:text-xl lg:p-5 p-4 lg:p-3 text-center lg:my-1"
                 >
                   {obj.skill}
                 </div>

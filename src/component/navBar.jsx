@@ -25,6 +25,7 @@ const Navbar = ({ setGoToProjects ,goToProjects}) => {
         </Link>
         <Link
           onClick={()=>setGoToProjects(true)}
+          to={'/'}
           className={` hoverd-btn hover:text-white ease-in duration-300 px-4 py-2 rounded ${
             menuOpen ? "hoverd-btn " : ""
           }`}
