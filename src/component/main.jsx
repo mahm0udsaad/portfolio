@@ -150,7 +150,7 @@ function Main({ goToProjects , setGoToProjects}) {
                   transform: goToProjects ? "translatex(500%)" : "var(--avatar-right)",
                   transition:"0.5s ease",
                 }}
-                  src="src\assets\1647323032570-PhotoRoom.png-PhotoRoom.png"
+                  src="https://i.imgur.com/YsQfNrE.png"
                   className={`${imgCalss} avatar rounded showAvatar`}
                   alt="photo"
                 />
