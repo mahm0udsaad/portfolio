@@ -31,9 +31,9 @@ const Contact = () => {
     };
     useEffect(() => {
         setFormData({
-          ...formData, // Preserve the existing values
           name:profile ?  profile.name :'',
           email: profile ? profile.email :'',
+          message:''
         });
     }, [profile]);
 
@@ -47,13 +47,14 @@ const Contact = () => {
       
         const handleSubmit = (event) => {
           event.preventDefault();
-          axios.post('https://my-portfolio-fci7.onrender.com/sendEmail', formData)
+          axios.post('https://api-w7qp.onrender.com/sendEmail', formData)
             .then(response => {
-              setIsSubmited(true)
+              console.log(formData);
             })
             .catch(error => {
               console.error('Server Error:', error);
             });
+            setIsSubmited(true)
         };
 
     return ( 
