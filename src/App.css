@@ -1,12 +1,11 @@
-:root {
-    --avatar-right:translate(300%,65%);
-  }
-.avatar{
+
+.avatar {
     position: absolute;
-    transform: var(--avatar-right);
-    z-index: 50;
-    width: 300px;
-}
+    right: 5%;
+    bottom: 10%;
+    height:45%;
+    width:25%;
+  }
 .top-of{
     z-index: 70;
 }
@@ -57,15 +56,14 @@ body{
     width: 100%;
   }
 @media (max-width: 767px) {
-    :root {
-        --avatar-right: translate(150%,140%); 
-      }
-   
-    .avatar{
-        transform: var(--avatar-right);
-        height: 150px;
-        width: 150px;
-    }
+   :root{
+    --dimension:5rem;
+   }
+   .avatar {
+    bottom: 15%;
+       width: 45%;
+       height:40%;
+  }
     .w-container{
         width: 95%;
     }
@@ -77,7 +75,7 @@ body{
     }
     .right-center{
         right: 30%;
-        bottom: 35%;
+        bottom: 30%;
     }
     .res{
         width: 70%;
@@ -85,16 +83,51 @@ body{
     .project-card img{
         width: 160px;
     }
+
   }
-  @media (min-width: 768px) and (max-width: 1023px) {
-    :root {
-        --avatar-right: translate(80%,45%); 
-      }
-    .avatar{
-        transform: var(--avatar-right);
-        height: 40%;
+  @media (min-width: 480px) and (orientation: landscape) {
+    body{
+        overflow: auto;
     }
+    .top-section{
+        height: 100vh;
+    }
+    .bottom-section{
+        
+    }
+    .intro{
+        margin-top: 0 !important;
+    }
+    .intro p{
+        font-size: 25px;
+    }
+    .avatar {
+        position: absolute;
+        right: 1%;
+        bottom: 7%;
+        height:45%;
+        width:15% !important;
+      }
+      .right-center{
+        right: 42% !important;
+        bottom: 0;
+      }
+
+}
+  @media (min-width: 768px) and (max-width: 1023px) {
+
+      body{
+        overflow: auto;
+      }
+      .avatar{
+        width: 40%;
+        height:50%;
+      }
+      .right-center{
+        right: 38%;
+      }
   }
+
 @keyframes showTech {
     from {
         opacity: 0;

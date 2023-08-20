@@ -87,33 +87,17 @@ function Main({ goToProjects , setGoToProjects}) {
   }, [introComplete, currentTechIndex]);
   useEffect(()=>{
     if(goToProjects && removeTechIndex <= 0){
-      setTimeout(() => {
-         const newimgCalss = goToProjects ? 'hidden' : ''
-         setImgClass(newimgCalss)
-      }, 1000);
       const removeTime = setTimeout(()=>{
         setRemoveTechIndex(prev => prev - 1)
       },30)
       return ()=> clearTimeout(removeTime)
     }
   },[goToProjects, removeTechIndex])
+
   const showProjects = () => {
     setGoToProjects(!goToProjects);
   };
-  useEffect(() => {
-    if (goToProjects) {
-      const timeoutId = setTimeout(() => {
-        document.querySelector('.avatar').style.display = 'none';
-      }, 300);
 
-      return () => clearTimeout(timeoutId);
-    }else {
-      const timeoutId = setTimeout(() => {
-        document.querySelector('.avatar').style.display = 'block';
-      }, 100);
-      return ()=> clearTimeout(timeoutId)
-    }
-  }, [goToProjects]);
   return (
     <>
       <div className="h-screen w-full flex flex-col">
@@ -122,15 +106,24 @@ function Main({ goToProjects , setGoToProjects}) {
             height: goToProjects ? "0" : "55%",
             transition: "height 0.5s ease",
           }}
-          className="flex flex-col justify-between"
+          className="top-section flex flex-col justify-between relative"
         >
-          <div className="intro  lg:mt-25  lg:mt-12 w-container mx-auto">
-            <p className="italic text-2xl lg:text-4xl color-blue">
+          <div className="intro mt-5 md:mt-20 lg:mt-25  lg:mt-12 w-container mx-auto">
+            <p className="italic text-xl md:text-3xl lg:text-4xl color-blue">
               {displayText} {currentIndex < intro.length ? "|" : ""}
             </p>
           </div>
+          <img
+                style={{
+                  transform: goToProjects ? "translatex(500%)" : "translatex(0%)",
+                  transition:"0.5s ease",
+                }}
+                  src="https://i.imgur.com/YsQfNrE.png"
+                  className={`${imgCalss} avatar rounded showAvatar`}
+                  alt="photo"
+                />
           {introComplete && currentIndex > 0 ? (
-              <ul className="techList flex  z-20 space-x-5 lg:space-x-8 res mx-2 lg:mx-auto w-container my-5">
+              <ul className="techList flex  z-20 space-x-5 lg:space-x-8 res mx-2 sm:mx-auto w-container my-5">
                 {technologies
                   .slice(0, goToProjects ? removeTechIndex : currentTechIndex + 1)
                   .map((tech, index) => (
@@ -145,23 +138,14 @@ function Main({ goToProjects , setGoToProjects}) {
                   ))}
               </ul>
             ) : null}
-              <img
-                style={{
-                  transform: goToProjects ? "translatex(500%)" : "var(--avatar-right)",
-                  transition:"0.5s ease",
-                }}
-                  src="https://i.imgur.com/YsQfNrE.png"
-                  className={`${imgCalss} avatar rounded showAvatar`}
-                  alt="photo"
-                />
         </div>
         <div
           style={{
             background: "#265169",
-            height: goToProjects ? "100vh" : "50%",
+            height: goToProjects ? "300%" : "50%",
             transition: "height 0.5s ease",
           }}
-          className="translate-y-0 ease-out duration-1000 overflow-hidden"
+          className="translate-y-0 ease-out duration-1000 bottom-section"
         >
            <button
             onClick={showProjects}
