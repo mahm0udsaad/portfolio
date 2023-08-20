@@ -77,22 +77,14 @@ function Main({ goToProjects , setGoToProjects}) {
   }, [currentIndex, introComplete]);
 
   useEffect(() => {
-    if (introComplete && currentTechIndex < technologies.length) {
+    if (introComplete && currentTechIndex < technologies.length && !goToProjects) {
       const showTechs = setTimeout(() => {
         setCurrentTechIndex(prev => prev + 1);
       }, 70);
 
       return () => clearTimeout(showTechs);
     }
-  }, [introComplete, currentTechIndex]);
-  useEffect(()=>{
-    if(goToProjects && removeTechIndex <= 0){
-      const removeTime = setTimeout(()=>{
-        setRemoveTechIndex(prev => prev - 1)
-      },30)
-      return ()=> clearTimeout(removeTime)
-    }
-  },[goToProjects, removeTechIndex])
+  }, [introComplete, currentTechIndex ,goToProjects]);
 
   const showProjects = () => {
     setGoToProjects(!goToProjects);
@@ -103,10 +95,10 @@ function Main({ goToProjects , setGoToProjects}) {
       <div className="h-screen w-full flex flex-col">
         <div
           style={{
-            height: goToProjects ? "0" : "55%",
+            height: goToProjects ? "0%" : "55%",
             transition: "height 0.5s ease",
           }}
-          className="top-section flex flex-col justify-between relative"
+          className={goToProjects?"top-section flex flex-col justify-between relative":"flex flex-col justify-between relative"}
         >
           <div className="intro mt-5 md:mt-20 lg:mt-25  lg:mt-12 w-container mx-auto">
             <p className="italic text-xl md:text-3xl lg:text-4xl color-blue">
@@ -115,24 +107,24 @@ function Main({ goToProjects , setGoToProjects}) {
           </div>
           <img
                 style={{
-                  transform: goToProjects ? "translatex(500%)" : "translatex(0%)",
-                  transition:"0.5s ease",
+                  transform: goToProjects ? "translatex(150%)" : "translatex(0)",
+                  transition:"0.8s ease",
                 }}
                   src="https://i.imgur.com/YsQfNrE.png"
-                  className={`${imgCalss} avatar rounded showAvatar`}
+                  className={`${imgCalss} z-50 avatar rounded showAvatar`}
                   alt="photo"
                 />
           {introComplete && currentIndex > 0 ? (
-              <ul className="techList flex  z-20 space-x-5 lg:space-x-8 res mx-2 sm:mx-auto w-container my-5">
+              <ul className="techList flex  z-20 space-x-5 lg:space-x-8 res mx-2 sm:mx-auto w-container lg:my-5">
                 {technologies
-                  .slice(0, goToProjects ? removeTechIndex : currentTechIndex + 1)
+                  .slice(0, currentTechIndex + 1)
                   .map((tech, index) => (
                     <li className="showTech ease-in duration-300 "  key={index}>
                       <span
                         className="icon"
                         style={{ color: tech.color }}
                       >
-                        <i className={`lg:text-5xl text-2xl ${tech.iconClass}`}></i>
+                        <i className={`lg:text-5xl text-3xl ${tech.iconClass}`}></i>
                       </span>
                     </li>
                   ))}
@@ -142,16 +134,16 @@ function Main({ goToProjects , setGoToProjects}) {
         <div
           style={{
             background: "#265169",
-            height: goToProjects ? "300%" : "50%",
+            height: goToProjects ? "100vh" : "50%",
             transition: "height 0.5s ease",
           }}
-          className="translate-y-0 ease-out duration-1000 bottom-section"
+          className={goToProjects?'bottom-section-active z-50':"translate-y-0 ease-out duration-1000 bottom-section"}
         >
            <button
             onClick={showProjects}
             style={{
               transition:'.5s',
-              transform: introComplete ? '' : 'translatey(-300%)',
+              transform: introComplete ? '' : 'translatey(-80%)',
                 display:selectedProject ? 'none':'block'
             }}
             className={goToProjects ? "z-60 translate-x-10 lg:translate-x-0 right-20 top-5 rotate-90 absolute top-1":"hover:translate-y-5 mb-10 ease-out duration-300 absolute top-0 inset-2/4 rotate-90 lg:-translate-x-5 "} 
@@ -170,7 +162,7 @@ function Main({ goToProjects , setGoToProjects}) {
             <h1 style={{
               transition:'.5s',
               transform: introComplete ? 'translatey(0)' : 'translatey(300%)'
-            }} className={goToProjects?'hidden':"right-center absolute  text-white text-5xl"}>Projects</h1>
+            }} className={goToProjects?'hidden':"right-center absolute  text-white text-2xl md:text-2xl lg:text-5xl"}>Projects</h1>
         </div>
       </div>
     </>

@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = ({ setGoToProjects ,goToProjects}) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [startAnimate , setStartAnimate] = useState(false)
+  useEffect(()=>{
+    setTimeout(()=>{
+      setStartAnimate(goToProjects)
+    },150)
+  },[goToProjects])
   useNavigate()
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -12,9 +18,18 @@ const Navbar = ({ setGoToProjects ,goToProjects}) => {
   }
 
   return (
-    <nav  className={goToProjects ? 'hidden':"bg-transparent p-4 z-50  flex justify-between items-center w-11/12 lg:mx-10"}>
-      <Link to={'/'} className="font-semibold text-xl"><i className="fa-brands fa-centercode"></i></Link>
-      <div className="hidden sm:flex space-x-4">
+    <nav 
+    style={{
+      background: startAnimate?"#265169":'#ffffff00',
+      width: startAnimate ? "100%":"" ,
+      color:startAnimate? 'white':'black',
+      transition: "height 0.2s ease",
+      margin: startAnimate? '0':''
+    }}
+     className={`bg-transparent p-4 z-50 flex justify-between items-center w-11/12 lg:mx-10`}>
+      <Link to={'/'} onClick={()=>setGoToProjects(false)} className={startAnimate?"ml-10":"font-semibold text-xl"}><i className="fa-brands fa-centercode"></i></Link>
+
+      <div className={startAnimate ? "hidden":"hidden sm:flex space-x-4"}>
         <Link 
           to={'/'}
           className={`hoverd-btn hover:text-white ease-in duration-300 px-4 py-2 rounded ${
@@ -49,7 +64,7 @@ const Navbar = ({ setGoToProjects ,goToProjects}) => {
           Contact Me
         </Link>
       </div>
-      <button className="lg:hidden  focus:outline-none" onClick={toggleMenu}>
+      <button className={startAnimate?'hidden':"lg:hidden md:hidden focus:outline-none"} onClick={toggleMenu}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"

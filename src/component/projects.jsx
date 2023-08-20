@@ -32,13 +32,13 @@ const Projects = ({goToProjects ,selectedProject ,setSelectedProject ,projects})
     
     return ( 
   <div className="text-white lg:w-container mt-30 lg:mx-auto relative flex flex-col justify-center items-center">
-      <h1 className="lg:text-5xl text-2xl">{selectedProject? selectedProject.name:'Projects'}</h1>
-        {selectedProject ? <button className="hover:opacity-50 absolute top-0 left-5 " onClick={initialProjects}><i className="fa-3x fa-regular fa-circle-left"></i></button> : ''}
+      <h1 className="lg:text-5xl text-3xl">{selectedProject? selectedProject.name:'Projects'}</h1>
+        {selectedProject ? <button className="hover:opacity-50 absolute -top-2 right-5 lg:right-10 " onClick={initialProjects}><i className="fa-3x fa-regular fa-circle-right"></i></button> : ''}
       <ul className={selectedProject ? 'w-full h-full':"flex z-20 res mx-auto w-full my-10"}>
       {goToProjects ? (
     <div className="projects-container">
   {goToProjects ? (
-    <div className={selectedProject ? 'flex flex-col w-full' : "mx-auto grid gap-8 w-11/12 items-center justify-center grid-cols-2 lg:grid-cols-3 lg:grid-rows-3"}>
+    <div className={selectedProject ? 'flex w-11/12 flex-col mx-auto items-center' : "mx-auto grid gap-8 w-11/12 items-center justify-center grid-cols-2 lg:grid-cols-3 lg:grid-rows-3"}>
      {selectedProject ? (
          <ProjectCard key={selectedProject.index} isItSelected={selectedProject} tech={selectedProject} index={selectedProject.index} />
      ):(

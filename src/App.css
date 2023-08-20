@@ -1,10 +1,15 @@
-
+body{
+    overflow: hidden !important;
+}
 .avatar {
     position: absolute;
-    right: 5%;
+    right: 5% !important;
     bottom: 10%;
     height:45%;
     width:25%;
+  }
+  button span {
+    pointer-events: none;
   }
 .top-of{
     z-index: 70;
@@ -28,6 +33,7 @@ body{
 .right-center{
     right: 45%;
     bottom: 25%;
+    pointer-events: none;
 }
 .hoverd-btn:hover{
   background-color: #265169;
@@ -60,7 +66,7 @@ body{
     --dimension:5rem;
    }
    .avatar {
-    bottom: 15%;
+       bottom: 13%;
        width: 45%;
        height:40%;
   }
@@ -74,7 +80,7 @@ body{
         transition: .5s ease-in-out;
     }
     .right-center{
-        right: 30%;
+        right: 40%;
         bottom: 30%;
     }
     .res{
@@ -85,33 +91,36 @@ body{
     }
 
   }
-  @media (min-width: 480px) and (orientation: landscape) {
+  @media (min-width: 480px) and (max-width: 1023px) and (orientation: landscape) {
     body{
-        overflow: auto;
+        overflow: auto !important;
     }
     .top-section{
-        height: 100vh;
-    }
-    .bottom-section{
-        
-    }
-    .intro{
-        margin-top: 0 !important;
+        height: 0vh !important;
     }
     .intro p{
-        font-size: 25px;
+        font-size: larger;
+    }
+    .intro{
+
+        margin-top: 0 !important;
     }
     .avatar {
         position: absolute;
-        right: 1%;
-        bottom: 7%;
-        height:45%;
-        width:15% !important;
+        right: 5%;
+        bottom: 5%;
+        height:60% !important;
+        width: 25% !important;
       }
       .right-center{
-        right: 42% !important;
+        right: 47% !important;
         bottom: 0;
       }
+      .bottom-section-active{
+        height: 100% !important;
+        overflow: auto !important;
+      }
+    
 
 }
   @media (min-width: 768px) and (max-width: 1023px) {
@@ -124,7 +133,7 @@ body{
         height:50%;
       }
       .right-center{
-        right: 38%;
+        right: 45%;
       }
   }
 

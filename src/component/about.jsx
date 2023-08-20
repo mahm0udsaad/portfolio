@@ -51,10 +51,10 @@ const About = () => {
       <div
         className="h-screen absolute top-16 w-full flex justify-center"
       >
-        <div className="mx-auto mt-0 w-11/12 block text-center">
+        <div className="mx-auto md:mt-5  mt-0 w-11/12 block text-center">
           <h1 className="text-4xl">About me</h1>
-          <div className="h-[45vh] mt-2 flex justify-start text-start overflow-auto">
-            <p className="lg:text-2xl text-start">
+          <div className="h-[45vh] mt-2 md:mt-5 flex justify-start text-start overflow-auto">
+            <p className="sm:text-2xl text-start">
               {displayText}
               {currentIndex < intro.length ? '|' : ''}
             </p>
