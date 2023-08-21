@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Projects from "./projects";
 import "../App.css";
-
+import {motion} from 'framer-motion'
 function Main({ goToProjects , setGoToProjects}) {
   const intro = `Hello, I'm excited to present myself
   as a committed React Developer, 
@@ -17,6 +17,13 @@ function Main({ goToProjects , setGoToProjects}) {
    const [displayText, setDisplayText] = useState("");
    const [imgCalss , setImgClass] =useState('');
    const [projects, setProjects] = useState([
+    {
+      image: "https://i.imgur.com/gmRlxLF.png",
+      name: "Quiz App",
+      description: "Welcome to the Quiz App! This application is a fun and interactive platform for testing your knowledge across various topics. Built using React, Tailwind CSS, and enhanced with smooth animations using Framer Motion, the Quiz App provides an engaging experience for users to challenge themselves. The backend of the app is powered by Express.js and MongoDB, ensuring seamless data storage and retrieval for a wide range of quiz questions. Whether you're looking to learn something new or simply have a good time, the Quiz App offers a dynamic way to explore and enhance your knowledge.",
+      url: "https://quiz-app-0f8i.onrender.com/",
+      codeUrl: "https://github.com/mahm0udsaad/test-app"
+    },
     {
       image: 'https://i.imgur.com/TwVuEQp.png',
       name: 'Ecommerce site',
@@ -53,7 +60,6 @@ function Main({ goToProjects , setGoToProjects}) {
       codeUrl: 'https://github.com/mahm0udsaad/todo-app'
     }
   ]);
-  
    const technologies = [
     { name: "HTML5", iconClass: "fab fa-html5", color: "#E34F26" },
     { name: "CSS3", iconClass: "fab fa-css3-alt", color: "#1572B6" },
@@ -87,7 +93,17 @@ function Main({ goToProjects , setGoToProjects}) {
   }, [introComplete, currentTechIndex ,goToProjects]);
 
   const showProjects = () => {
-    setGoToProjects(!goToProjects);
+    if(!goToProjects){
+      setGoToProjects(true);
+    }
+    console.log(goToProjects);
+
+  };
+  const closeProjects = () => {
+    if(goToProjects){
+      setGoToProjects(false);
+    }
+    console.log(goToProjects);
   };
 
   return (
@@ -100,38 +116,45 @@ function Main({ goToProjects , setGoToProjects}) {
           }}
           className={goToProjects?"top-section flex flex-col justify-between relative":"flex flex-col justify-between relative"}
         >
-          <div className="intro mt-5 md:mt-20 lg:mt-25  lg:mt-12 w-container mx-auto">
+          <div className="intro mt-5 md:mt-16 lg:mt-25  lg:mt-12 w-container ml-5 md:ml-10 lg:mx-auto">
             <p className="italic text-xl md:text-3xl lg:text-4xl color-blue">
               {displayText} {currentIndex < intro.length ? "|" : ""}
             </p>
           </div>
-          <img
-                style={{
-                  transform: goToProjects ? "translatex(150%)" : "translatex(0)",
-                  transition:"0.8s ease",
-                }}
-                  src="https://i.imgur.com/YsQfNrE.png"
-                  className={`${imgCalss} z-50 avatar rounded showAvatar`}
-                  alt="photo"
+         <motion.dev 
+          initial={{x:100}}
+          animate={{x:goToProjects? '200%' : 30 }}
+          transition={{ duration: .5}}
+          className={`z-50 avatar rounded`}
+         >
+             <img
+                className="lg:rounded md:rounded rounded-full"
+                src="https://i.imgur.com/YsQfNrE.png"
+                alt="photo"
                 />
-          {introComplete && currentIndex > 0 ? (
-              <ul className="techList flex  z-20 space-x-5 lg:space-x-8 res mx-2 sm:mx-auto w-container lg:my-5">
+         </motion.dev>
+          {!goToProjects && introComplete && currentIndex > 0 ? (
+              <ul className="techList flex  z-20 space-x-5 md:space-x-8 lg:space-x-8 res mx-2 sm:mx-auto w-container lg:my-5">
                 {technologies
                   .slice(0, currentTechIndex + 1)
                   .map((tech, index) => (
-                    <li className="showTech ease-in duration-300 "  key={index}>
+                    <motion.li
+                     initial={{opacity:0}}
+                     animate={{opacity:1}}
+                    className="showTech ease-in duration-300 "  key={index}>
                       <span
                         className="icon"
                         style={{ color: tech.color }}
                       >
-                        <i className={`lg:text-5xl text-3xl ${tech.iconClass}`}></i>
+                        <i className={`lg:text-5xl md:text-4xl text-3xl ${tech.iconClass}`}></i>
                       </span>
-                    </li>
+                    </motion.li>
                   ))}
               </ul>
             ) : null}
         </div>
         <div
+          onClick={showProjects}
           style={{
             background: "#265169",
             height: goToProjects ? "100vh" : "50%",
@@ -140,7 +163,7 @@ function Main({ goToProjects , setGoToProjects}) {
           className={goToProjects?'bottom-section-active z-50':"translate-y-0 ease-out duration-1000 bottom-section"}
         >
            <button
-            onClick={showProjects}
+            onClick={closeProjects}
             style={{
               transition:'.5s',
               transform: introComplete ? '' : 'translatey(-80%)',
@@ -162,7 +185,7 @@ function Main({ goToProjects , setGoToProjects}) {
             <h1 style={{
               transition:'.5s',
               transform: introComplete ? 'translatey(0)' : 'translatey(300%)'
-            }} className={goToProjects?'hidden':"right-center absolute  text-white text-2xl md:text-2xl lg:text-5xl"}>Projects</h1>
+            }} className={goToProjects?'hidden':"right-center absolute  text-white text-2xl md:text-4xl lg:text-5xl"}>Projects</h1>
         </div>
       </div>
     </>

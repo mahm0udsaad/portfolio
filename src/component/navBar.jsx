@@ -20,14 +20,14 @@ const Navbar = ({ setGoToProjects ,goToProjects}) => {
   return (
     <nav 
     style={{
-      background: startAnimate?"#265169":'#ffffff00',
-      width: startAnimate ? "100%":"" ,
+      background: startAnimate?"#265169":'',
+      width: startAnimate ? "100%":"90%" ,
       color:startAnimate? 'white':'black',
-      transition: "height 0.2s ease",
+      transition: "height 0.5s ease",
       margin: startAnimate? '0':''
     }}
-     className={`bg-transparent p-4 z-50 flex justify-between items-center w-11/12 lg:mx-10`}>
-      <Link to={'/'} onClick={()=>setGoToProjects(false)} className={startAnimate?"ml-10":"font-semibold text-xl"}><i className="fa-brands fa-centercode"></i></Link>
+     className={`bg-transparent w-full p-4 z-50 flex justify-between items-center w-11/12 mx-auto lg:mx-10`}>
+      <Link to={'/'} onClick={()=>setGoToProjects(false)} className={startAnimate?"":"font-semibold text-xl"}><i className="fa-brands fa-centercode"></i></Link>
 
       <div className={startAnimate ? "hidden":"hidden sm:flex space-x-4"}>
         <Link 

@@ -1,28 +1,8 @@
 import React, { useState ,useEffect} from 'react';
-
+import { motion } from 'framer-motion';
 const ProjectCard = ({ tech, index ,showCardDetails ,isItSelected  ,dimension}) => {
     const [onHover , setHover] = useState(false)
-    const [imagesLoaded, setImagesLoaded] = useState(false);
 
-  useEffect(() => {
-    const imageElements = Array.from(
-      document.querySelectorAll(".project-card img")
-    );
-
-    const handleImageLoad = () => {
-      setImagesLoaded(true);
-    };
-
-    imageElements.forEach((img) => {
-      img.addEventListener("load", handleImageLoad);
-    });
-
-    return () => {
-      imageElements.forEach((img) => {
-        img.removeEventListener("load", handleImageLoad);
-      });
-    };
-  }, []);
     const hoverd =()=>{
         isItSelected ? setHover(true) : null
     }
@@ -31,7 +11,7 @@ const ProjectCard = ({ tech, index ,showCardDetails ,isItSelected  ,dimension}) 
     }
   return (
     <>
-      <div onMouseMove={hoverd} onMouseLeave={leaveHover} onClick={showCardDetails} className={isItSelected ? 'items-center flex justify-center w-11/12 my-10  relative cursor-pointer ' :`${imagesLoaded ? "loaded":"loading"} cursor-pointer relative w-full flex flex-col justify-center relative`} key={index}>
+      <div onMouseMove={hoverd} onMouseLeave={leaveHover} onClick={showCardDetails} className={isItSelected ? 'items-center flex justify-center w-11/12 my-10  relative cursor-pointer ' :`cursor-pointer relative w-full flex flex-col justify-center relative`} key={index}>
         {onHover ? ( 
                 <div  className={onHover ? ' w-full lg:w-6/12 z-40 ease-in duration-600 bg-black/50 h-full  absolute  z-60 flex flex-col justify-center w-6/12 ':" h-full  absolute project-links z-60 flex flex-col justify-center"}>
                  <div className=" items-center flex justify-around">
@@ -43,7 +23,12 @@ const ProjectCard = ({ tech, index ,showCardDetails ,isItSelected  ,dimension}) 
                 </a>
                  </div>
              </div>):('')}
+             <motion.div
+             initial={{opacity:0}}
+             animate={{opacity:1}}
+             >
             <img   className={isItSelected ? 'mx-auto lg:w-6/12':' w-full z-30 ease-in duration-300 lg:w-11/12'} src={tech.image} alt={tech.name} width={dimension} height={dimension} />
+             </motion.div>
          </div>
             <div className={isItSelected ? "flex  justify-center h-60 overflow-auto w-11/12 h-2/4":'hidden'}>
              <p className='lg:text-2xl lg:w-6/12  text-xl'>{tech.description}</p>

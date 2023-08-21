@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import ProjectCard from './projectCard'
 const Projects = ({goToProjects ,selectedProject ,setSelectedProject ,projects}) => {
     const [currentTechIndex, setCurrentTechIndex] = useState(0);
@@ -32,8 +33,8 @@ const Projects = ({goToProjects ,selectedProject ,setSelectedProject ,projects})
     
     return ( 
   <div className="text-white lg:w-container mt-30 lg:mx-auto relative flex flex-col justify-center items-center">
-      <h1 className="lg:text-5xl text-3xl">{selectedProject? selectedProject.name:'Projects'}</h1>
-        {selectedProject ? <button className="hover:opacity-50 absolute -top-2 right-5 lg:right-10 " onClick={initialProjects}><i className="fa-3x fa-regular fa-circle-right"></i></button> : ''}
+      <h1 className="lg:text-5xl text-3xl mr-10">{selectedProject? selectedProject.name:'Projects'}</h1>
+        {selectedProject ? <button className="hover:opacity-50 absolute -top-2 right-2 lg:right-5 lg:right-10 " onClick={initialProjects}><i className="fa-3x fa-regular fa-circle-right"></i></button> : ''}
       <ul className={selectedProject ? 'w-full h-full':"flex z-20 res mx-auto w-full my-10"}>
       {goToProjects ? (
     <div className="projects-container">
@@ -43,8 +44,12 @@ const Projects = ({goToProjects ,selectedProject ,setSelectedProject ,projects})
          <ProjectCard key={selectedProject.index} isItSelected={selectedProject} tech={selectedProject} index={selectedProject.index} />
      ):(
      projects.slice(0, !goToProjects ?  removeProjectsIndex : currentTechIndex + 1).map((tech, index) => (
-        <ProjectCard showCardDetails={()=>showCardDetails(index)} dimension={'50'} isItSelected={selectedProject} key={index} tech={tech} index={index} />
-      ))
+      <AnimatePresence>
+
+        <ProjectCard key={index} showCardDetails={()=>showCardDetails(index)} dimension={'50'} isItSelected={selectedProject} tech={tech} index={index} />
+      </AnimatePresence>
+
+          ))
      )}
         </div>
       ) : (
