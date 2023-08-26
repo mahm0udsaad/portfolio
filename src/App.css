@@ -110,10 +110,14 @@ body{
     }
     .avatar {
         position: absolute;
-        right: 5%;
+        right: 6% !important;
         bottom: 5%;
         height:60% !important;
-        width: 25% !important;
+        width: 40% !important;
+      }
+      .avatar ul{
+        align-items: center ;
+        margin-top: 0;
       }
       .right-center{
         right: 47% !important;
