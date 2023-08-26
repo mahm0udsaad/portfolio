@@ -126,7 +126,7 @@ function Main({ goToProjects , setGoToProjects}) {
           initial={{x:100}}
           animate={{x:goToProjects? 100 :  0}}
           transition={{ duration: .5}}
-          className={`z-50 w-11/12 lg:6/12 avatar rounded flex justify-between lg:justify-around`}
+          className={`z-50 w-full lg:6/12 avatar rounded flex justify-between lg:justify-around`}
          >
              <motion.ul
             className="grid grid-cols-2 grid-rows-2  md:flex md:flex-col md:items-end gap-2 lg:mt-0 mt-10"
@@ -135,7 +135,7 @@ function Main({ goToProjects , setGoToProjects}) {
                 initial={{opacity:0 , x: 50 }}
                 animate={{x:goToProjects? 50 :  0 , opacity:goToProjects?0:1}}
                 transition={{ delay: .5 , duration:.7}}
-                className="z-20 lg:h-12 lg:w-48 md:h-12 items-center flex rounded-full h-7 w-24 md:w-40  justify-center px-1 bg-gray-100"
+                className="z-20 shadow-md lg:h-12 lg:w-48 md:h-12 items-center flex rounded-full lg:rounded md:rounded h-7 w-24 md:w-40  justify-center px-1 bg-gray-100"
               >
                 <p className="opacity-70 color-blue">Front End</p>
               </motion.li>
@@ -143,7 +143,7 @@ function Main({ goToProjects , setGoToProjects}) {
                 initial={{opacity:0 , x: 50 }}
                 animate={{x:goToProjects? 50 :  0 , opacity:goToProjects?0:1}}
                 transition={{ delay: .5 , duration:.7}}
-                className="z-20 lg:h-12 lg:w-48 md:h-12 items-center flex rounded-full h-7 w-24 md:w-40 justify-center px-1 bg-gray-100"
+                className="z-20 shadow-md lg:h-12 lg:w-48 md:h-12 items-center flex rounded-full lg:rounded md:rounded h-7 w-24 md:w-40 justify-center px-1 bg-gray-100"
               >
                 <p className="opacity-70 color-blue">Web Desgin</p>
               </motion.li>
@@ -152,13 +152,13 @@ function Main({ goToProjects , setGoToProjects}) {
                 initial={{opacity:0 , x: 70 }}
                 animate={{x:goToProjects? 70 :  0 , opacity:goToProjects?0:1}}
                 transition={{ delay: .7 , duration:.7}} 
-                className="z-20 lg:h-12 lg:w-48 md:h-12 items-center flex rounded-full h-7 w-40 justify-center px-1 bg-gray-100"
+                className="z-20 shadow-md lg:h-12 lg:w-48 md:h-12 items-center flex rounded-full lg:rounded md:rounded h-7 w-48 justify-center px-1 bg-gray-100"
               >
-                <p className="opacity-70 color-blue">Responsive Websites</p>
+                <p className="opacity-70 color-blue flex ">Responsive Websites</p>
               </motion.li>
             </motion.ul>
              <img
-                className="lg:rounded md:rounded rounded-full z-30"
+                className="lg:rounded md:rounded rounded-full z-30 shadow-md"
                 src="https://i.imgur.com/YsQfNrE.png"
                 alt="photo"
                 />
