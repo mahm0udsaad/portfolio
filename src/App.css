@@ -3,7 +3,7 @@ body{
 }
 .avatar {
     position: absolute;
-    right: 5% !important;
+    right: 5% ;
     bottom: 10%;
     height:45%;
     width:25%;
@@ -66,9 +66,12 @@ body{
     --dimension:5rem;
    }
    .avatar {
-       bottom: 15%;
-       width: 45%;
+       bottom: 12%;
+       right: 0;
        height:40%;
+  }
+  .avatar ul{
+    height: 50%;
   }
     .w-container{
         width: 95%;
@@ -129,8 +132,16 @@ body{
         overflow: auto;
       }
       .avatar{
-        width: 40%;
+        right: 0;
         height:50%;
+      }
+      .avatar ul{
+        height: 60%;
+        width: 50%;
+      }
+      .avatar img{
+        width: 40%;
+        height: 80%;
       }
       .right-center{
         right: 42%;

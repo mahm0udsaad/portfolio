@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import Projects from "./projects";
 import "../App.css";
-import {motion} from 'framer-motion'
+import {motion} from 'framer-motion';
+
 function Main({ goToProjects , setGoToProjects}) {
   const intro = `Hello, I'm excited to present myself
   as a committed React Developer, 
@@ -18,32 +19,25 @@ function Main({ goToProjects , setGoToProjects}) {
    const [imgCalss , setImgClass] =useState('');
    const [projects, setProjects] = useState([
     {
-      image: "https://i.imgur.com/gmRlxLF.png",
-      name: "Quiz App",
-      description: "Welcome to the Quiz App! This application is a fun and interactive platform for testing your knowledge across various topics. Built using React, Tailwind CSS, and enhanced with smooth animations using Framer Motion, the Quiz App provides an engaging experience for users to challenge themselves. The backend of the app is powered by Express.js and MongoDB, ensuring seamless data storage and retrieval for a wide range of quiz questions. Whether you're looking to learn something new or simply have a good time, the Quiz App offers a dynamic way to explore and enhance your knowledge.",
-      url: "https://quiz-app-0f8i.onrender.com/",
-      codeUrl: "https://github.com/mahm0udsaad/test-app"
-    },
-    {
-      image: 'https://i.imgur.com/TwVuEQp.png',
-      name: 'Ecommerce site',
-      description: 'Welcome to the Ecommerce site! This project showcases an online shopping platform built using React and Tailwind CSS. Users can explore a variety of products, add them to the cart, and proceed to checkout. The site offers a seamless shopping experience with a user-friendly interface.',
-      url: 'https://e-commerce-ebn2.onrender.com/',
-      codeUrl: 'https://github.com/mahm0udsaad/E_Commerce'
-    },
-    {
-      image: 'https://i.imgur.com/KpwHJTm.png',
-      name: 'Property Finder Clone',
-      description: "Welcome to the Property Finder Clone! This is the client-side repository of the app, developed using React, Tailwind CSS, and communicating with the backend built on Express.js and MongoDB. Explore property listings, search for your dream home, and find all the details you need.",
-      url: 'https://property-finder-8ixf.onrender.com/',
-      codeUrl: 'https://github.com/mahm0udsaad/property_finder'
-    },
-    {
       image: 'https://i.imgur.com/b9LZRJG.png',
       name: 'Hotel Booking Site',
       description: 'Welcome to the Hotel Booking Site with Restaurants Page! This project is a Hotel Booking Site with an integrated restaurant page, developed using React, Tailwind CSS, and React Router. Explore available rooms, make reservations, and find information about the hotel\'s restaurants.',
       url: 'https://azure-waves.onrender.com/',
       codeUrl: 'https://github.com/mahm0udsaad/Stars-Hotel'
+    },
+    {
+      image: 'https://i.imgur.com/TwVuEQp.png',
+      name: 'E-commerce site',
+      description: 'Welcome to the Ecommerce site! This project showcases an online shopping platform built using React and Tailwind CSS. Users can explore a variety of products, add them to the cart, and proceed to checkout. The site offers a seamless shopping experience with a user-friendly interface.',
+      url: 'https://e-commerce-ebn2.onrender.com/',
+      codeUrl: 'https://github.com/mahm0udsaad/E_Commerce'
+    },
+    {
+      image: "https://i.imgur.com/gmRlxLF.png",
+      name: "Quiz App",
+      description: "Welcome to the Quiz App! This application is a fun and interactive platform for testing your knowledge across various topics. Built using React, Tailwind CSS, and enhanced with smooth animations using Framer Motion, the Quiz App provides an engaging experience for users to challenge themselves. The backend of the app is powered by Express.js and MongoDB, ensuring seamless data storage and retrieval for a wide range of quiz questions. Whether you're looking to learn something new or simply have a good time, the Quiz App offers a dynamic way to explore and enhance your knowledge.",
+      url: "https://quiz-app-0f8i.onrender.com/",
+      codeUrl: "https://github.com/mahm0udsaad/test-app"
     },
     {
       image: 'https://i.imgur.com/RaxVbvY.png',
@@ -53,8 +47,15 @@ function Main({ goToProjects , setGoToProjects}) {
       codeUrl: 'https://github.com/mahm0udsaad/weather-app'
     },
     {
+      image: 'https://i.imgur.com/KpwHJTm.png',
+      name: 'Property Finder Clone',
+      description: "Welcome to the Property Finder Clone! This is the client-side repository of the app, developed using React, Tailwind CSS, and communicating with the backend built on Express.js and MongoDB. Explore property listings, search for your dream home, and find all the details you need.",
+      url: 'https://property-finder-8ixf.onrender.com/',
+      codeUrl: 'https://github.com/mahm0udsaad/property_finder'
+    },
+    {
       image: 'https://i.imgur.com/bUUhCEq.png',
-      name: 'Todo App',
+      name: 'To-do App',
       description: 'Welcome to the Todo App! This is a simple task manager built using HTML, CSS, and JavaScript. Add, delete, and edit tasks with ease. The app utilizes LocalStorage to save your tasks even after you close the browser.',
       url: 'https://todoapp-ebmi.onrender.com/',
       codeUrl: 'https://github.com/mahm0udsaad/todo-app'
@@ -121,18 +122,47 @@ function Main({ goToProjects , setGoToProjects}) {
               {displayText} {currentIndex < intro.length ? "|" : ""}
             </p>
           </div>
-         <motion.dev 
+         <motion.div 
           initial={{x:100}}
-          animate={{x:goToProjects? '200%' : 30 }}
+          animate={{x:goToProjects? 100 :  0}}
           transition={{ duration: .5}}
-          className={`z-50 avatar rounded`}
+          className={`z-50 w-11/12 lg:6/12 avatar rounded flex justify-between lg:justify-around`}
          >
+             <motion.ul
+            className="grid grid-cols-2 grid-rows-2  md:flex md:flex-col md:items-end gap-2 lg:mt-0 mt-10"
+            >
+              <motion.li
+                initial={{opacity:0 , x: 50 }}
+                animate={{x:goToProjects? 50 :  0 , opacity:goToProjects?0:1}}
+                transition={{ delay: .5 , duration:.7}}
+                className="z-20 lg:h-12 lg:w-48 md:h-12 items-center flex rounded-full h-7 w-24 md:w-40  justify-center px-1 bg-gray-100"
+              >
+                <p className="opacity-70 color-blue">Front End</p>
+              </motion.li>
+              <motion.li
+                initial={{opacity:0 , x: 50 }}
+                animate={{x:goToProjects? 50 :  0 , opacity:goToProjects?0:1}}
+                transition={{ delay: .5 , duration:.7}}
+                className="z-20 lg:h-12 lg:w-48 md:h-12 items-center flex rounded-full h-7 w-24 md:w-40 justify-center px-1 bg-gray-100"
+              >
+                <p className="opacity-70 color-blue">Web Desgin</p>
+              </motion.li>
+              
+              <motion.li
+                initial={{opacity:0 , x: 70 }}
+                animate={{x:goToProjects? 70 :  0 , opacity:goToProjects?0:1}}
+                transition={{ delay: .7 , duration:.7}} 
+                className="z-20 lg:h-12 lg:w-48 md:h-12 items-center flex rounded-full h-7 w-40 justify-center px-1 bg-gray-100"
+              >
+                <p className="opacity-70 color-blue">Responsive Websites</p>
+              </motion.li>
+            </motion.ul>
              <img
-                className="lg:rounded md:rounded rounded-full"
+                className="lg:rounded md:rounded rounded-full z-30"
                 src="https://i.imgur.com/YsQfNrE.png"
                 alt="photo"
                 />
-         </motion.dev>
+         </motion.div>
           {!goToProjects && introComplete && currentIndex > 0 ? (
               <ul className="techList flex  z-20 space-x-5 md:space-x-8 lg:space-x-8 res mx-2 sm:mx-auto w-container lg:my-5">
                 {technologies
@@ -166,10 +196,11 @@ function Main({ goToProjects , setGoToProjects}) {
             onClick={closeProjects}
             style={{
               transition:'.5s',
-              transform: introComplete ? '' : 'translatey(-80%)',
+              opacity: introComplete ? '1' : '0',
+              transform: introComplete ? '' : 'translatey(-80%) rotate(90deg)',
                 display:selectedProject ? 'none':'block'
             }}
-            className={goToProjects ? "z-60 translate-x-10 lg:translate-x-0 right-20 top-5 rotate-90 absolute top-1":"hover:translate-y-5 mb-10 ease-out duration-300 absolute top-0 inset-2/4 rotate-90 lg:-translate-x-5 "} 
+            className={goToProjects ? "z-60 rotate-90 translate-x-10 lg:translate-x-0 right-20 top-5 absolute top-1":"hover:translate-y-5 mb-10 ease-out duration-300 absolute top-0 inset-2/4 rotate-90 lg:-translate-x-5 "} 
           >
             <i
             className={`fa ${
