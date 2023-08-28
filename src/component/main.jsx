@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Projects from "./projects";
 import "../App.css";
 import {motion} from 'framer-motion';
@@ -7,8 +7,7 @@ function Main({ goToProjects , setGoToProjects}) {
   const intro = `Hello, I'm excited to present myself
   as a committed React Developer, 
   driven by a deep passion for creating
-  compelling user experiences
-  through innovative code. Let's build something great together! 🚀`;
+  compelling user experiences`;
    const [introComplete, setIntroComplete] = useState(false);
    const [showTechnologies, setShowTechnologies] = useState(false);
    const [selectedProject , setSelectedProject] = useState(null)
@@ -16,7 +15,7 @@ function Main({ goToProjects , setGoToProjects}) {
    const [removeTechIndex, setRemoveTechIndex] = useState(0);
    const [currentIndex, setCurrentIndex] = useState(0);
    const [displayText, setDisplayText] = useState("");
-   const [imgCalss , setImgClass] =useState('');
+   const avatar = useRef(null)
    const [projects, setProjects] = useState([
     {
       image: 'https://i.imgur.com/b9LZRJG.png',
@@ -97,14 +96,19 @@ function Main({ goToProjects , setGoToProjects}) {
     if(!goToProjects){
       setGoToProjects(true);
     }
-    console.log(goToProjects);
-
   };
   const closeProjects = () => {
     if(goToProjects){
       setGoToProjects(false);
     }
-    console.log(goToProjects);
+  };
+  
+  const animationCompleteHandler = () => {
+    if (!goToProjects) {
+      // Animation has completed and it's not in "goToProjects" state
+      // Set visibility to none
+      setGoToProjects(false);
+    }
   };
 
   return (
@@ -123,11 +127,13 @@ function Main({ goToProjects , setGoToProjects}) {
             </p>
           </div>
          <motion.div 
-          initial={{x:100}}
-          animate={{x:goToProjects? 100 :  0}}
-          transition={{ duration: .5}}
-          className={`z-50 w-full lg:6/12 avatar rounded flex justify-between lg:justify-around`}
-         >
+             initial={{ x: 100, opacity: 1 }}
+             animate={{ x: goToProjects ? 100 : 0, opacity: goToProjects ? 0 : 1 }}
+             transition={{ duration: 0.5 }}
+             onAnimationComplete={animationCompleteHandler}
+             className={`z-50 w-full lg:w-6/12 avatar rounded flex justify-between lg:justify-around`}
+             style={{ display: goToProjects ? "none" : "flex" }}
+           >
              <motion.ul
             className="grid grid-cols-2 grid-rows-2  md:flex md:flex-col md:items-end gap-2 lg:mt-0 mt-10"
             >
@@ -190,7 +196,7 @@ function Main({ goToProjects , setGoToProjects}) {
             height: goToProjects ? "100vh" : "50%",
             transition: "height 0.5s ease",
           }}
-          className={goToProjects?'bottom-section-active z-50':"translate-y-0 ease-out duration-1000 bottom-section"}
+          className={goToProjects?'bottom-section-active z-50 overflow-hidden':"translate-y-0 ease-out duration-1000 bottom-section"}
         >
            <button
             onClick={closeProjects}
