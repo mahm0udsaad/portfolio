@@ -49,7 +49,7 @@ function Main({ goToProjects , setGoToProjects}) {
       image: 'https://i.imgur.com/KpwHJTm.png',
       name: 'Property Finder Clone',
       description: "Welcome to the Property Finder Clone! This is the client-side repository of the app, developed using React, Tailwind CSS, and communicating with the backend built on Express.js and MongoDB. Explore property listings, search for your dream home, and find all the details you need.",
-      url: 'https://property-finder-8ixf.onrender.com/',
+      url: 'https://property-finder-theta.vercel.app/',
       codeUrl: 'https://github.com/mahm0udsaad/property_finder'
     },
     {
