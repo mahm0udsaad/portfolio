@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Form from "./form";
+import Google from './google'
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 
 const Contact = () => {
