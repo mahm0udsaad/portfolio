@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Projects from "./projects";
-import "../App.css";
 import {motion} from 'framer-motion';
+import "../App.css";
 
 function Main({ goToProjects , setGoToProjects}) {
   const intro = `Hello, I'm excited to present myself
@@ -121,56 +121,55 @@ function Main({ goToProjects , setGoToProjects}) {
           }}
           className={goToProjects?"top-section flex flex-col justify-between relative":"flex flex-col justify-between relative"}
         >
-          <div className="intro mt-5 md:mt-16 lg:mt-25  lg:mt-12 w-container ml-5 md:ml-10 lg:mx-auto">
+          <div className="intro mt-9 md:mt-5 lg:mt-5 md:mt-16 lg:mt-25  lg:mt-12 w-container ml-5 md:ml-10 lg:mx-auto">
             <p className="italic text-xl md:text-3xl lg:text-4xl color-blue">
               {displayText} {currentIndex < intro.length ? "|" : ""}
             </p>
           </div>
          <motion.div 
-             initial={{ x: 100, opacity: 1 }}
+             initial={{ x: -100, opacity: 1 }}
              animate={{ x: goToProjects ? 100 : 0, opacity: goToProjects ? 0 : 1 }}
              transition={{ duration: 0.5 }}
              onAnimationComplete={animationCompleteHandler}
-             className={`z-50 w-full lg:w-6/12 avatar rounded flex justify-between lg:justify-around`}
+             className={`z-50 w-full lg:w-full avatar rounded flex justify-between lg:justify-around`}
              style={{ display: goToProjects ? "none" : "flex" }}
            >
+              <img
+                className="lg:rounded md:rounded rounded-full z-30 shadow-md"
+                src="https://i.imgur.com/YsQfNrE.png"
+                alt="photo"
+                />
              <motion.ul
-            className="grid grid-cols-2 grid-rows-2  md:flex md:flex-col md:items-end gap-2 lg:mt-0 mt-10"
+            className="grid grid-cols-2 grid-rows-2  md:flex md:flex-col md:items-end gap-2 lg:mt-0 mt-7"
             >
               <motion.li
-                initial={{opacity:0 , x: 50 }}
-                animate={{x:goToProjects? 50 :  0 , opacity:goToProjects?0:1}}
-                transition={{ delay: .5 , duration:.7}}
+                initial={{opacity:0 , scale: 0 }}
+                animate={{scale:goToProjects? 0 :  1 , opacity:goToProjects?0:1}}
+                transition={{ duration:.3}}
                 className="z-20 shadow-md lg:h-12 lg:w-48 md:h-12 items-center flex rounded-full lg:rounded md:rounded h-7 w-24 md:w-40  justify-center px-1 bg-gray-100"
               >
                 <p className="opacity-70 color-blue">Front End</p>
               </motion.li>
               <motion.li
-                initial={{opacity:0 , x: 50 }}
-                animate={{x:goToProjects? 50 :  0 , opacity:goToProjects?0:1}}
-                transition={{ delay: .5 , duration:.7}}
-                className="z-20 shadow-md lg:h-12 lg:w-48 md:h-12 items-center flex rounded-full lg:rounded md:rounded h-7 w-24 md:w-40 justify-center px-1 bg-gray-100"
+                initial={{opacity:0 , scale: 0 }}
+                animate={{scale:goToProjects? 0 :  1 , opacity:goToProjects?0:1}}
+                transition={{ duration:.3}}
+                className="z-20 shadow-md lg:h-12 lg:w-48 md:h-12 items-center flex rounded-full lg:rounded md:rounded h-7 w-26 md:w-40 justify-center px-1 bg-gray-100"
               >
-                <p className="opacity-70 color-blue">Web Desgin</p>
+                <p className="opacity-70 color-blue">MERN Stack</p>
               </motion.li>
-              
               <motion.li
-                initial={{opacity:0 , x: 70 }}
-                animate={{x:goToProjects? 70 :  0 , opacity:goToProjects?0:1}}
-                transition={{ delay: .7 , duration:.7}} 
+                 initial={{opacity:0 , scale: 0 }}
+                 animate={{scale:goToProjects? 0 :  1 , opacity:goToProjects?0:1}}
+                transition={{  duration:.5}} 
                 className="z-20 shadow-md lg:h-12 lg:w-48 md:h-12 items-center flex rounded-full lg:rounded md:rounded h-7 w-48 justify-center px-1 bg-gray-100"
               >
-                <p className="opacity-70 color-blue flex ">Responsive Websites</p>
+                <p className="opacity-70 color-blue flex ">Responsive Design</p>
               </motion.li>
             </motion.ul>
-             <img
-                className="lg:rounded md:rounded rounded-full z-30 shadow-md"
-                src="https://i.imgur.com/YsQfNrE.png"
-                alt="photo"
-                />
          </motion.div>
           {!goToProjects && introComplete && currentIndex > 0 ? (
-              <ul className="techList flex  z-20 space-x-5 md:space-x-8 lg:space-x-8 res mx-2 sm:mx-auto w-container lg:my-5">
+              <ul className="lg:justify-end md:justify-end techList flex  z-20 space-x-5 md:space-x-8 lg:space-x-8 res mx-2 sm:mx-auto w-container lg:my-5">
                 {technologies
                   .slice(0, currentTechIndex + 1)
                   .map((tech, index) => (
@@ -218,7 +217,7 @@ function Main({ goToProjects , setGoToProjects}) {
             }}
           ></i>
           </button>
-          {goToProjects && <Projects projects={projects} setSelectedProject={setSelectedProject} selectedProject={selectedProject} goToProjects={goToProjects}/>}
+          {<Projects projects={projects} setSelectedProject={setSelectedProject} selectedProject={selectedProject} goToProjects={goToProjects}/>}
             <h1 style={{
               transition:'.5s',
               transform: introComplete ? 'translatey(0)' : 'translatey(300%)'

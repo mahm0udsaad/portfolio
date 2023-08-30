@@ -133,7 +133,7 @@ body{
   @media (min-width: 768px) and (max-width: 1023px) {
 
       body{
-        overflow: auto;
+        overflow: hidden;
       }
       .avatar{
         right: 0;
@@ -142,9 +142,10 @@ body{
       .avatar ul{
         height: 60%;
         width: 50%;
+        align-items: center;
       }
       .avatar img{
-        width: 40%;
+        width: 35%;
         height: 80%;
       }
       .right-center{

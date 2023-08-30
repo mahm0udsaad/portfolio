@@ -27,6 +27,7 @@ const ProjectCard = ({ tech, index ,showCardDetails ,isItSelected  ,dimension}) 
              initial={{opacity:0}}
              animate={{opacity:1}}
              >
+          <h1 className='text-center'>{tech.name}</h1>
             <img   className={isItSelected ? 'mx-auto lg:w-6/12':' w-full z-30 ease-in duration-300 lg:w-11/12'} src={tech.image} alt={tech.name} width={dimension} height={dimension} />
              </motion.div>
          </div>
