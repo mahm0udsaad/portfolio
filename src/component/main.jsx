@@ -86,7 +86,7 @@ function Main({ goToProjects , setGoToProjects}) {
     if (introComplete && currentTechIndex < technologies.length && !goToProjects) {
       const showTechs = setTimeout(() => {
         setCurrentTechIndex(prev => prev + 1);
-      }, 70);
+      }, 100);
 
       return () => clearTimeout(showTechs);
     }
@@ -105,8 +105,6 @@ function Main({ goToProjects , setGoToProjects}) {
   
   const animationCompleteHandler = () => {
     if (!goToProjects) {
-      // Animation has completed and it's not in "goToProjects" state
-      // Set visibility to none
       setGoToProjects(false);
     }
   };
@@ -119,7 +117,10 @@ function Main({ goToProjects , setGoToProjects}) {
             height: goToProjects ? "0%" : "55%",
             transition: "height 0.5s ease",
           }}
-          className={goToProjects?"top-section flex flex-col justify-between relative":"flex flex-col justify-between relative"}
+          className={goToProjects
+            ?
+            "top-section flex flex-col justify-between relative"
+            :"flex flex-col justify-between relative"}
         >
           <div className="intro mt-9 md:mt-5 lg:mt-5 md:mt-16 lg:mt-25  lg:mt-12 w-container ml-5 md:ml-10 lg:mx-auto">
             <p className="italic text-xl md:text-3xl lg:text-4xl color-blue">
@@ -127,11 +128,11 @@ function Main({ goToProjects , setGoToProjects}) {
             </p>
           </div>
          <motion.div 
-             initial={{ x: -100, opacity: 1 }}
-             animate={{ x: goToProjects ? 100 : 0, opacity: goToProjects ? 0 : 1 }}
+             initial={{ opacity: 0 }}
+             animate={{ opacity: goToProjects ? 0 : 1 }}
              transition={{ duration: 0.5 }}
              onAnimationComplete={animationCompleteHandler}
-             className={`z-50 w-full lg:w-full avatar rounded flex justify-between lg:justify-around`}
+             className={`z-50 w-full lg:w-full avatar flex justify-between lg:justify-around`}
              style={{ display: goToProjects ? "none" : "flex" }}
            >
               <img
@@ -140,7 +141,7 @@ function Main({ goToProjects , setGoToProjects}) {
                 alt="photo"
                 />
              <motion.ul
-            className="grid grid-cols-2 grid-rows-2  md:flex md:flex-col md:items-end gap-2 lg:mt-0 mt-7"
+            className="grid grid-cols-2 grid-rows-2  md:flex md:flex-col md:items-end gap-2 mt-7"
             >
               <motion.li
                 initial={{opacity:0 , scale: 0 }}
