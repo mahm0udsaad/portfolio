@@ -122,7 +122,7 @@ function Main({ goToProjects , setGoToProjects}) {
             "top-section flex flex-col justify-between relative"
             :"flex flex-col justify-between relative"}
         >
-          <div className="intro mt-9 md:mt-5 lg:mt-5 md:mt-16 lg:mt-25  lg:mt-12 w-container ml-5 md:ml-10 lg:mx-auto">
+          <div className="intro w-container ml-5 md:ml-10 pt-4 md:pt-10 lg:pt-0 lg:mx-auto">
             <p className="italic text-xl md:text-3xl lg:text-4xl color-blue">
               {displayText} {currentIndex < intro.length ? "|" : ""}
             </p>
@@ -141,53 +141,56 @@ function Main({ goToProjects , setGoToProjects}) {
                 alt="photo"
                 />
              <motion.ul
-            className="grid grid-cols-2 grid-rows-2  md:flex md:flex-col md:items-end gap-2 mt-7"
+            className="grid grid-cols-2 grid-rows-2 md:flex md:items-center gap-2"
             >
               <motion.li
                 initial={{opacity:0 , scale: 0 }}
                 animate={{scale:goToProjects? 0 :  1 , opacity:goToProjects?0:1}}
                 transition={{ duration:.3}}
-                className="z-20 shadow-md lg:h-12 lg:w-48 md:h-12 items-center flex rounded-full lg:rounded md:rounded h-7 w-24 md:w-40  justify-center px-1 bg-gray-100"
+                className="z-20 shadow-md lg:h-20 lg:w-48 md:h-12 items-center flex rounded-full lg:rounded md:rounded h-35 w-full md:w-40  justify-center bg-gray-100"
               >
-                <p className="opacity-70 color-blue">Front End</p>
+                <p className="opacity-70 color-blue sm:text-xl">Front End</p>
               </motion.li>
               <motion.li
                 initial={{opacity:0 , scale: 0 }}
                 animate={{scale:goToProjects? 0 :  1 , opacity:goToProjects?0:1}}
                 transition={{ duration:.3}}
-                className="z-20 shadow-md lg:h-12 lg:w-48 md:h-12 items-center flex rounded-full lg:rounded md:rounded h-7 w-26 md:w-40 justify-center px-1 bg-gray-100"
+                className="z-20 shadow-md lg:h-20 lg:w-48 md:h-12 items-center flex rounded-full lg:rounded md:rounded h-35 w-full md:w-40 justify-center  bg-gray-100"
               >
-                <p className="opacity-70 color-blue">MERN Stack</p>
+                <p className="opacity-70 color-blue sm:text-xl">MERN Stack</p>
               </motion.li>
               <motion.li
                  initial={{opacity:0 , scale: 0 }}
                  animate={{scale:goToProjects? 0 :  1 , opacity:goToProjects?0:1}}
                 transition={{  duration:.5}} 
-                className="z-20 shadow-md lg:h-12 lg:w-48 md:h-12 items-center flex rounded-full lg:rounded md:rounded h-7 w-48 justify-center px-1 bg-gray-100"
+                className="z-20 shadow-md lg:h-20 md:h-12 items-center flex rounded-full lg:rounded md:rounded h-35 w-48 justify-center px-1 bg-gray-100"
               >
-                <p className="opacity-70 color-blue flex ">Responsive Design</p>
+                <p className="opacity-70 color-blue sm:text-xl flex ">Responsive Design</p>
               </motion.li>
             </motion.ul>
          </motion.div>
-          {!goToProjects && introComplete && currentIndex > 0 ? (
-              <ul className="lg:justify-end md:justify-end techList flex  z-20 space-x-5 md:space-x-8 lg:space-x-8 res mx-2 sm:mx-auto w-container lg:my-5">
-                {technologies
-                  .slice(0, currentTechIndex + 1)
-                  .map((tech, index) => (
-                    <motion.li
-                     initial={{opacity:0}}
-                     animate={{opacity:1}}
-                    className="showTech ease-in duration-300 "  key={index}>
-                      <span
-                        className="icon"
-                        style={{ color: tech.color }}
-                      >
-                        <i className={`lg:text-5xl md:text-4xl text-3xl ${tech.iconClass}`}></i>
-                      </span>
-                    </motion.li>
-                  ))}
-              </ul>
-            ) : null}
+         <ul className=" w-11/12 justify-end techList flex z-20 space-x-5 md:space-x-8 lg:space-x-8 res mx-2 sm:mx-auto w-container">
+      {!goToProjects && introComplete && currentIndex > 0 ? (
+        technologies
+          .slice(0, currentTechIndex + 1)
+          .map((tech, index) => (
+            <motion.li
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="showTech ease-in duration-300"
+              key={index}
+            >
+              <span
+                className="icon"
+                style={{ color: tech.color }}
+              >
+                <i className={`lg:text-5xl md:text-4xl text-3xl ${tech.iconClass}`}></i>
+              </span>
+            </motion.li>
+          ))
+      ) : null}
+    </ul>
+
         </div>
         <div
           onClick={showProjects}
@@ -196,7 +199,7 @@ function Main({ goToProjects , setGoToProjects}) {
             height: goToProjects ? "100vh" : "50%",
             transition: "height 0.5s ease",
           }}
-          className={goToProjects?'bottom-section-active z-50 overflow-hidden':"translate-y-0 ease-out duration-1000 bottom-section"}
+          className={goToProjects?'bottom-section-active z-50 overflow-y-auto':"translate-y-0 ease-out duration-1000 bottom-section"}
         >
            <button
             onClick={closeProjects}
